@@ -1,0 +1,20 @@
+.completa {
+    height: 400px;
+    flex-wrap: wrap;
+}
+
+.completa div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.completa .fecha{
+    display: flex;
+    flex-direction: column;
+}
+
+.completa .fecha span {
+    height: 50%;
+}
