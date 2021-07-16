@@ -10,20 +10,37 @@ import React from 'react';
 import { createBrowserHistory } from 'history'
 import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
 
+import './components/login.css'
+
 function App() {
   const history = createBrowserHistory();
   return (
     <div className="App">
-      <Header />
+      <Header/>
       <Router history={history}>
-        
-        <Link to='/previa'>Previa</Link>
-        <Link to='/completa'>Completa</Link>
+        <ul>
+          <li>
+            <Link to='/login'>Login</Link>
+          </li>
+          <li>
+            <Link to='/registro'>Registro</Link>
+          </li>
+          <li>
+            <Link to='/previa'>Previa</Link>
+          </li>
+          <li>
+            <Link to='/completa'>Completa</Link>
+          </li>
+          <li>
+            <Link to='/interfaz'>Interfaz</Link>
+          </li>
+        </ul>
         <Switch>
-          <Route path="/login" component={FormLogin} />
+          <Route path='/login' component={FormLogin} />
           <Route path="/registro" component={FormRegistro} />
           <Route path="/previa" component={IndicadorVistaPrevia}/>
           <Route path="/completa" component={IndicadorVistaCompleta}/>
+          <Route path="/interfaz" component={Interfaz}/>
           <Route path="/"><Interfaz /></Route>
         </Switch>
       </Router>

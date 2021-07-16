@@ -3,7 +3,7 @@
     flex-wrap: wrap;
 }
 
-.completa div {
+.completa > div {
     width: 50%;
     display: flex;
     align-items: center;

@@ -4,36 +4,15 @@ import './Footer.css';
 const Footer = () => {
     return (
 
-        <
-        footer >
-
-        <
-        div class = "wrapperr" >
-
-        <
-        nav >
-        <
-        a href = "#" > Privacidad < /a> 
-
-        <
-        a href = "#" > Terminos y Condiciones < /a> 
-
-        <
-        a href = "#" > Derechos reservados < /a> 
-
-
-        <
-        /
-        nav >
-
-        <
-        /div>
-
-
-        <
-        /footer>
-
-
+        <footer>
+            <div class = "wrapperr">
+                <nav>
+                    <a href = "/" > Privacidad </a> 
+                    <a href = "/" > Terminos y Condiciones </a> 
+                    <a href = "/" > Derechos reservados </a> 
+                </nav>
+            </div>
+        </footer>
     )
 
 }

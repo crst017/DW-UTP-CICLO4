@@ -21,8 +21,10 @@ footer {
     overflow: hidden;
     /* Eliminamos errores de float */
     background: #8c8c8c;
-    margin-top: 550px;
-    position: bottom;
+    position: absolute;
+    bottom: 0px;
+    /* margin-top: 550px; */
+    /* position: bottom; */
 }
 
 .wrapperr {
