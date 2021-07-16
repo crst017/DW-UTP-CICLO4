@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import './App.css';
 import Interfaz from './components/Interfaz';
 import FormLogin from './components/FormLogin';
@@ -25,30 +24,6 @@ function App() {
       </Router>
     </div>
   );
-=======
-//import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header.jsx';
-import Body from './components/Banner.jsx';
-import Footer from './components/Footer.jsx';
-
-function App() {
-    return ( <
-        div className = "App" >
-        <
-        Header > < /Header>
-
-
-
-        <
-        Footer > < /Footer>
-
-
-
-        <
-        /div>
-    );
->>>>>>> juan_galvis
 }
 
 export default App;
