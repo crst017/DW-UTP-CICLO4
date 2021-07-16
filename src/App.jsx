@@ -1,4 +1,5 @@
 import './App.css';
+import Interfaz from './components/Interfaz';
 import FormLogin from './components/FormLogin';
 import FormRegistro from './components/FormRegistro';
 import IndicadorVistaPrevia from './components/IndicadorVistaPrevia';
