@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+.container-fluid {
+    height: 100px;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    box-shadow: 10px 10px 2px 0px #8d8d8d
+}
+
+span {
+    display: flex;
+    justify-content: left;
+    align-items: right;
+}
+
+footer {
+    width: 100%;
+    /* Establecemos que el footer abarque el 100% del documento */
+    overflow: hidden;
+    /* Eliminamos errores de float */
+    background: #8c8c8c;
+    margin-top: 550px;
+    position: bottom;
+}
+
+.wrapperr {
+    width: 100%;
+    /* Establecemos que el ancho sera del 90% */
+    max-width: 1000px;
+    /* Aqui le decimos que el ancho máximo sera de 1000px */
+    /*margin: auto;*/
+    margin: auto;
+    /* Centramos los elementos */
+    overflow: hidden;
+    /* Eliminamos errores de float */
+}
+
+footer nav {
+    float: none;
+    line-height: 0px;
+}
+
+footer nav a {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 10px 10px 10px;
+    line-height: normal;
+    font-size: 15px;
+    font-weight: bold;
+    -webkit-transition: all 400ms ease;
+    -o-transition: all 400ms ease;
+    transition: all 400ms ease;
+}
+
+footer nav a:hover {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+}

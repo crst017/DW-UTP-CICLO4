@@ -1,0 +1,50 @@
+* header {
+    width: 100%;
+    /* Establecemos que el header abarque el 100% del documento */
+    overflow: hidden;
+    /* Eliminamos errores de float */
+    background: #8c8c8c;
+    /*margin-bottom: 30px;*/
+}
+
+.wrapper {
+    width: 100%;
+    /* Establecemos que el ancho sera del 100% */
+    max-width: 1000px;
+    /* Aqui le decimos que el ancho máximo sera de 1000px */
+    margin: auto;
+    /* Centramos los elementos */
+    overflow: hidden;
+    /* Eliminamos errores de float */
+}
+
+header .nombrepagina {
+    color: #000000;
+    font-size: 40px;
+    line-height: 40px;
+    float: left;
+}
+
+header nav {
+    float: right;
+    line-height: 20px;
+}
+
+header nav a {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 10px 10px 10px;
+    line-height: normal;
+    font-size: 25px;
+    font-weight: bold;
+    -webkit-transition: all 400ms ease;
+    -o-transition: all 400ms ease;
+    transition: all 400ms ease;
+}
+
+header nav a:hover {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+}
