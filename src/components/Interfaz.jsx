@@ -14,9 +14,9 @@ const Interfaz = () => {
                     <div className="img"></div>
                     <h2>Ingresar sus datos</h2>
                 </a>
-                <a className='card' href="/">
+                <a className="card" href="/indicadores">
                     <div className="img"></div>
-                    <h2>Consultar registros</h2>
+                    <h2>Consultar indicadores</h2>
                 </a>
             </div>
 

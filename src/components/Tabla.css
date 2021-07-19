@@ -1,0 +1,63 @@
+.tabla {
+    margin-bottom: 70px;
+}
+.encabezados {
+    background-color: red;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    height: 45px;
+}
+
+.encabezados span {
+    height: 45px;
+}
+
+.indicador.row {
+    height: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+
+.tabla span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+}
+
+.tabla [class^="col"] {
+    
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.tabla [class^="col"]:nth-last-child(1) {
+    border: none;
+}
+
+.container.card {
+    background-color: #efefef;
+}
+
+a:visited {
+    color: none;;
+}
+
+.tabla a {
+    color: black;
+}
+
+.tabla a:hover {
+    font-weight: bolder;
+    font-size: 20px;
+    color: black;
+}
+
+.indicador.row:hover {
+    box-shadow:  0px 0px 15px 7px rgb(3, 40, 48, 0.7);
+    font-size: 20px;
+}

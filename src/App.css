@@ -1,5 +1,10 @@
+/* @import '../node_modules/bootstrap/scss/_variables.scss'; */
+
 .App {
     text-align: left;
+    background-color: #e9ecef;
+    min-height: 100vh;
+    position: relative;
 }
 
 .App-logo {
@@ -36,3 +41,28 @@
         transform: rotate(360deg);
     }
 }
+
+#indicadores {
+    padding: 60px 0px;
+    height: 100%;
+}
+
+/* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.App .card-header {
+    background-color: #087990;
+    /* border-color: black; */
+    color: white;
+}
+
+.App .card {
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+/* .App .btn {
+    background-color:rgba(0, 0, 0, 0.4);
+} */
