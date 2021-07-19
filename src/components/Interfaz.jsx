@@ -10,7 +10,7 @@ const Interfaz = () => {
             </nav> */}
 
             <div className="cont-card">
-                <a className='card' href="/">
+                <a className='card' href="/nuevo">
                     <div className="img"></div>
                     <h2>Ingresar sus datos</h2>
                 </a>
