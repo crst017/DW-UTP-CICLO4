@@ -3,7 +3,7 @@
     /* Establecemos que el header abarque el 100% del documento */
     overflow: hidden;
     /* Eliminamos errores de float */
-    background: #8c8c8c;
+    background: #087990;
     /*margin-bottom: 30px;*/
     /* position: absolute; */
     /* top: 0px; */
@@ -21,20 +21,20 @@
 }
 
 header .nombrepagina {
-    color: #000000;
+    color: #ffffff;
     font-size: 40px;
     line-height: 40px;
     float: left;
 }
 
 header nav {
-    float: right;
+    float: none;
     line-height: 20px;
 }
 
 header nav a {
     display: inline-block;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 10px 10px 10px 10px;
     line-height: normal;
@@ -47,6 +47,6 @@ header nav a {
 
 header nav a:hover {
     background: #ffffff;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 50px;
 }

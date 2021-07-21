@@ -50,7 +50,7 @@ a.card{
     display: block;
     width: 250px;
     height: 350px;
-    background-color: rgb(200, 200, 200);
+    background-color: #087990;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +74,7 @@ a.card{
 
 .card h2{
     margin-top: 40px;
-color: rgb(60, 60, 60);
+color: rgb(255, 255, 255);
 font-size: 24px;
 }
 
