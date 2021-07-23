@@ -5,7 +5,7 @@ footer {
     justify-content: left;
     overflow: hidden;
     background: #087990;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 
