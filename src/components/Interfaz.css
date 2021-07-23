@@ -7,7 +7,7 @@
     text-decoration: none;
 }
 
-.container{
+.interfaz{
     color: rgb(10, 10, 10);
     height: 80vh;
     display: flex;
@@ -131,3 +131,22 @@ a.card{
     right: 30px;
 }
 
+.interfaz a.card::after {
+    content: "";
+    position: absolute;
+    /* width: 100%; */
+    bottom: 10px;
+    height: 3px;
+    width: 0px;
+    transition: 400ms width;
+}
+
+.interfaz a.card:hover::after {
+    width: 100%;
+    background-color: white;
+}
+
+.interfaz p {
+    width: 80%;
+    margin: 0 auto;
+}

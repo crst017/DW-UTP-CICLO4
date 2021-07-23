@@ -8,7 +8,7 @@ import img2 from './img/upload-file.png';
 
 const Interfaz = () => {
     return (
-        <div className='container'>
+        <div className='interfaz'>
 
 
             <div className="cont-card">

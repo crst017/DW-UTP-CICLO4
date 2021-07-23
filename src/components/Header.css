@@ -9,22 +9,25 @@
 header.header {
     height: 70px;
     border-bottom: solid 2px #087990;
+    background-color: #087990;
+    color: white;
 }
 
 header nav {
     font-size: 18px;
+    color: red;
 }
 
-nav a:after {
+header a:after {
     content: "";
     height: 3px;
     display: block;
     border-radius: 3px;
     width: 0px;
-    transition: 500ms width;
+    transition: 400ms width;
 }
 
-nav a:hover::after {
+header a:hover::after {
     width: 100%;
-    background-color: #087990;
+    background-color: white;
 }
