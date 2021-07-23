@@ -27,8 +27,8 @@ function App() {
           <Route path="/completa" component={IndicadorVistaCompleta}/>
 
           <Route path="/indicadores">
-            <section className="container-fluid indicadores col-10 g-0 d-flex" id="indicadores">
-              <Filtro className="col"></Filtro>
+            <section className="container-fluid indicadores g-0 d-flex col-10" id="indicadores">
+              <Filtro></Filtro>
               <Tabla></Tabla>
             </section>
           </Route>

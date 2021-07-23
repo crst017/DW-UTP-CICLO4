@@ -3,34 +3,28 @@ footer {
     height: 60px;
     display: flex;
     justify-content: left;
-    overflow: hidden;
+    align-items: center;
     background: #087990;
+    color: white;
     position: fixed;
     bottom: 0px;
 }
 
-.wrapperr {
-    width: 95%;
-    max-width: 1000px;
-    margin: auto;
-    overflow: hidden;
-}
-
-footer nav a {
+footer nav span {
     display: inline-block;
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 10px 10px 10px 10px;
     line-height: normal;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 16px;
     -webkit-transition: all 400ms ease;
     -o-transition: all 400ms ease;
     transition: all 400ms ease;
+    user-select: none;
 }
 
-footer nav a:hover {
-    background: #ffffff;
+footer nav span:hover {
+    /* background: #ffffff; */
     color: rgb(0, 0, 0);
     border-radius: 50px;
 }

@@ -9,6 +9,10 @@
 
 .container{
     color: rgb(10, 10, 10);
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav{
@@ -38,7 +42,6 @@
 
 
 .cont-card{
-    margin-top: 100px;
     display: flex;
     align-items: center;
     justify-content:center;
