@@ -16,7 +16,7 @@ export default function FormLogin() {
                         <label htmlFor="floatingPasswordLogin">Contraseña</label>
                     </div>
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
-                    <p>¿No tienes una cuenta? <a href="/registro"> Regístrate</a></p>
+                    <p>¿No tienes una cuenta? <a className="register-link" href="/registro"> Regístrate</a></p>
                 </form>
             </main>
         </div>
