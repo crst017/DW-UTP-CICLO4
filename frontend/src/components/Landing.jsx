@@ -6,7 +6,7 @@ import adv1 from './img/addbanner.jpg';
 
 export default function Landing() {
     return (
-        <div>
+        <div className='landing'>
             <div className = 'banner'>
                 <img src={adv1} className='img-fluid' alt="banner" />
             </div>

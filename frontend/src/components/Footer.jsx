@@ -4,12 +4,12 @@ import './Footer.css';
 const Footer = () => {
     return (
 
-        <footer>
-            <div className = "wrapperr">
+        <footer className="d-flex justify-content-center">
+            <div class="wrapperr col-9">
                 <nav>
-                    <a href = "/" > Privacidad </a> 
-                    <a href = "/" > Terminos y Condiciones </a> 
-                    <a href = "/" > Derechos reservados </a> 
+                    <span href = "/" > Privacidad </span> 
+                    <span href = "/" > Terminos y Condiciones </span> 
+                    <span href = "/" > Derechos reservados</span> 
                 </nav>
             </div>
         </footer>

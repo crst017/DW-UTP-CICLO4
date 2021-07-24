@@ -3,7 +3,7 @@ import './login.css'
 
 export default function FormLogin() {
     return (
-        <div className="form-body">
+        <div className="form-body login">
             <main className="form-signin">
                 <form>
                     <h1 className="h3 mb-3 fw-normal">Login</h1>
@@ -15,7 +15,7 @@ export default function FormLogin() {
                         <input type="password" className="form-control" id="floatingPasswordLogin" placeholder="Password" required></input>
                         <label htmlFor="floatingPasswordLogin">Contraseña</label>
                     </div>
-                    <button className="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+                    <button className="w-100 btn btn-lg btn-secondary" type="submit">Ingresar</button>
                     <p>¿No tienes una cuenta? <a className="register-link" href="/registro"> Regístrate</a></p>
                 </form>
             </main>

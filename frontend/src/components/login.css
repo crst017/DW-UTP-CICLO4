@@ -33,8 +33,15 @@ margin-bottom: 10px;
 border-top-left-radius: 0;
 border-top-right-radius: 0;
 }
-.btn {
+
+.login .btn {
     margin: 30px 0;
-    background-color:#087990 !important;
-    border-color:#087990 !important;
+    background-color:#087990;
+    border-color:#6c757d;
+}
+
+.login .btn {
+    margin: 30px 0;
+    background-color:#087990;
+    border-color:#6c757d;
 }

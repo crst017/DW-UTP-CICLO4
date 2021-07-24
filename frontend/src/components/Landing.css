@@ -1,4 +1,4 @@
-.banner{
+.landing .banner{
     color: rgb(0, 0, 0);
     height: auto;
     width: auto;
@@ -9,22 +9,22 @@
     justify-content:center;
 }
 
-.cont-card{
+.landing .cont-card{
     display: flex;
     /* align-items: right; */
     justify-content:center;
     flex-wrap: wrap;
 }
-.img-fluid {
+.landing .img-fluid {
     max-height: 600px;
     width: 100%;
     object-fit: cover;
 }
-.card.card-home {
+.landing .card.card-home {
     margin-top:  40px;
 }
 
-a.card{
+.landing a.card{
     display: block;
     width: 200px;
     height: 200px;
@@ -39,7 +39,7 @@ a.card{
     border: 1px solid rgb(199, 199, 199);
 }
 
-.card h2{
+.landing .card h2{
     margin-top: 10px;
     color: rgb(255, 255, 255);
     font-size: 24px;
@@ -47,7 +47,7 @@ a.card{
     text-align: center;
 }
 
-.card p{
+.landing .card p{
     color: rgb(5, 5, 5);
     font-size: 16px;
     padding: 0 10px;

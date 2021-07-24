@@ -4,7 +4,7 @@ import './Tabla.css'
 
 const Tabla = () => {
     return (
-        <section className="container">
+        <section className="container-tabla col-9">
             <h2 className="text-left mb-4">Indicadores</h2>
             <div className="tabla">
                 <div className="encabezados row g-0 card card-header p-0 mb-4">
@@ -13,7 +13,7 @@ const Tabla = () => {
                     <span className="col-3">Mes</span>
                     <span className="col-2">Año</span>
                 </div>
-                <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
+                <IndicadorVistaPrevia></IndicadorVistaPrevia>
                 <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
                 <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
                 <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>

@@ -2,40 +2,21 @@ import React from 'react';
 import './Header.css';
 
 const Header = () => {
+
     return (
-        // <div>
-        //     <header>
-        //         <div className = "wrapper" >
-        //         <div className = "nombrepagina" > Centralizador de Indicadores </div>
-        //         <nav >
-        //             <a href = "#" > Registrarse </a> 
-        //             <a href = "#" > Ingresar </a> 
-        //         </nav>
-        //         </div>
-        //     </header>
-        // </div>
-        <div>
-            <header>
-                <nav className="navbar navbar-expand-lg navbar-light">
-                    <div className="container-fluid">
-                        <a className="navbar-brand" href="/">Centralizador de Indicadores</a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                            <ul className="navbar-nav  ">
-                                <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/registro">Registrarse</a>
-                                </li>
-                                <li className="nav-item">
-                                <a className="nav-link" href="/login">Ingresar</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <header className="header col-12 d-flex justify-content-center">
+
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center col-9">
+                <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+                    <a class="fs-4 col-8 w-100 text-light text-decoration-none" href="/">Centralizador de indicadores</a>
+                </a>
+
+                <nav class="d-flex align-items-center mt-2 mt-md-0 ms-md-auto">
+                    <a class="me-3 px-3 text-light text-decoration-none" href="/login">Iniciar sesión</a>
+                    <a class="me-3 px-3 text-light text-decoration-none" href="/registro">Registrarse</a>
                 </nav>
-            </header>
-        </div>
+            </div>
+        </header>
     )
 }
 

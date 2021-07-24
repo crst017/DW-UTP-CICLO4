@@ -3,7 +3,7 @@ import './login.css'
 
 export default function FormRegistro() {
     return (
-        <div className="form-body">
+        <div className="form-body login registro">
             <main className="form-signin">
                 <form>
                     <h1 className="h3 mb-3 fw-normal">Registro</h1>
@@ -23,7 +23,7 @@ export default function FormRegistro() {
                     <input type="password" className="form-control" id="floatingPassword" placeholder="Password" required></input>
                     <label htmlFor="floatingPassword">Contraseña</label>
                     </div>
-                    <button className="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+                    <button className="w-100 btn btn-lg btn-secondary" type="submit">Registrarse</button>
                     <p>¿Ya tienes una cuenta? <a href="/login"> Ingresa</a></p>
                 </form>
             </main>
