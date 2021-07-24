@@ -2,129 +2,58 @@
     margin: 0;
     padding: 0;
 }
-
 [href]{
     text-decoration: none;
 }
-
-.container{
-    color: rgb(10, 10, 10);
-}
-
-.nav{
-    position: relative;
-    background-color: rgb(150, 150, 150);
-    height: 60px;
-}
-
-.nav a{
-    position: absolute;
-    right: 10px;
-    top: 14px;
-
-    color: rgb(245, 245, 245);
-}
-
-.nav h2{
-    position: absolute;
-    left: 60px;
-    top: 12px;
-    font-size: 24px;
-
-    color: rgb(245, 245, 245);
-}
-
-/**/
-
-
 .cont-card{
     margin-top: 100px;
     display: flex;
     align-items: center;
-    justify-content:center;
-    
+    justify-content:space-around;
 }
-
-
-a.card{
+.cont-card__card{
     display: block;
-    width: 280px;
-    height: 400px;
+    min-width: 25%;
+    height: 450px;
     background-color: #087990;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    justify-content: flex-start;
-    margin: 0 40px;
+    align-items: center;
+    justify-content:start;
+    margin: 0 5%;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    border: 1px solid rgb(199, 199, 199);
 }
-
-
-.card .img-cont{
+.cont-card__card:hover{
+    background-color: #1093ad;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.4);
+}
+.cont-card__card .img-cont{
     display: block;
     width: 100%;
-    height: 250px;
-    background-color:#087990;
+    height: 200px;
     border-radius: 5px 5px 0 0;
 }
-.card .img-cont img{
-    height: 100%;
+.cont-card__card .img-cont img{
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     display: block;
     padding: 10px;
 }
-
-
-
-.card h2{
-    margin-top: 40px;
+.cont-card__card h2{
+    margin-top: 100px;
     color: rgb(255, 255, 255);
-    font-size: 24px;
+    font-size: 32px;
     padding: 0 10px;
     text-align: center;
 }
-
-.card p{
-    color: rgb(5, 5, 5);
-    font-size: 16px;
-    padding: 0 10px;
+.cont-card__p{
+    color: rgb(219, 219, 219);
+    font-size: 1rem;
     text-align: center;
+    inline-size: 90%;
+    overflow-wrap: break-word;
 }
 
-
-
-/**/
-.footer{
-    position: absolute;
-    background-color: rgb(150, 150, 150);
-    width: 100%;
-    bottom: 0;
-}
-
-.foo{
-    position: relative;
-    height: 50px;
-}
-
-
-.foo span{
-    position: absolute;
-    margin:5px;
-    top: 6px;
-}
-
-.foo .Pri{
-    left: 15px;
-}
-
-.foo .Ter{
-    left: 150px;
-}
-
-.foo .Der{
-    right: 30px;
-}
 
