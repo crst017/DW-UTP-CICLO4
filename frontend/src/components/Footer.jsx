@@ -5,7 +5,7 @@ const Footer = () => {
     return (
 
         <footer>
-            <div class = "wrapperr">
+            <div className = "wrapperr">
                 <nav>
                     <a href = "/" > Privacidad </a> 
                     <a href = "/" > Terminos y Condiciones </a> 

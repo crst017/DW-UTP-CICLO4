@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Interfaz from './components/Interfaz';
+import Landing from './components/Landing';
 import FormLogin from './components/FormLogin';
 import FormRegistro from './components/FormRegistro';
 import IndicadorVistaCompleta from './components/IndicadorVistaCompleta';
@@ -37,7 +38,12 @@ function App() {
             <NuevoRegistro></NuevoRegistro>
           </Route>
 
+          <Route path="/landing">
+            <Landing></Landing>
+          </Route>
+
           <Route path="/interfaz" component={Interfaz}/>
+          {/* <Router path = "/landing" component = {Landing}/> */}
           <Route path="/">
             <Interfaz/>
           </Route>

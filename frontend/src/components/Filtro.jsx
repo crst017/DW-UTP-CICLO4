@@ -3,31 +3,31 @@ import './Filtro.css'
 
 const Filtro = () => {
     return (
-        <section class="filtro card col-3">
+        <section className="filtro card col-3">
 
-            <h5 class="font-weight-bold mb-2 card-header">Empresa</h5>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input filled-in" id="new"/>
-                <label class="form-check-label text-capitalize" for="new">empresa A</label>
+            <h5 className="font-weight-bold mb-2 card-header">Empresa</h5>
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input filled-in" id="new"/>
+                <label className="form-check-label text-capitalize" for="new">empresa A</label>
             </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input filled-in" id="used"/>
-                <label class="form-check-label text-capitalize" for="used">Empresa B</label>
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input filled-in" id="used"/>
+                <label className="form-check-label text-capitalize" for="used">Empresa B</label>
             </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input filled-in" id="collectible"/>
-                <label class="form-check-label text-capitalize" for="collectible">Empresa C</label>
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input filled-in" id="collectible"/>
+                <label className="form-check-label text-capitalize" for="collectible">Empresa C</label>
             </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input filled-in" id="renewed"/>
-                <label class="form-check-label text-capitalize" for="renewed">Empresa D</label>
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input filled-in" id="renewed"/>
+                <label className="form-check-label text-capitalize" htmlFor="renewed">Empresa D</label>
             </div>
 
-            <h5 class="font-weight-bold mb-0 mt-2 card-header">Año</h5>
-            <select class="form-select" aria-label="Default select example">
+            <h5 className="font-weight-bold mb-0 mt-2 card-header">Año</h5>
+            <select className="form-select" aria-label="Default select example">
                 <option selected>Seleccionar año</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
@@ -36,8 +36,8 @@ const Filtro = () => {
             </select>
             
             
-            <h5 class="font-weight-bold mb-0 card-header">Mes</h5>
-            <select class="form-select px-3" aria-label="Default select example">
+            <h5 className="font-weight-bold mb-0 card-header">Mes</h5>
+            <select className="form-select px-3" aria-label="Default select example">
                 <option selected>Seleccionar mes</option>
                 <option value="enero">Enero</option>
                 <option value="febrero">Febrero</option>

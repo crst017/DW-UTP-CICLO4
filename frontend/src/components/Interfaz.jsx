@@ -1,7 +1,7 @@
 import React from 'react';
 import './Interfaz.css';
-import img1 from './img/search.png';
-import img2 from './img/upload-file.png';
+import img1 from '../img/search.png';
+import img2 from '../img/upload-file.png';
 
 
 
