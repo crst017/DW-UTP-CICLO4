@@ -3,15 +3,12 @@
     height: auto;
     width: auto;
     display: inline;
-    /* position: fixed; */
-    /* align-items: center; */
     margin: auto;
     justify-content:center;
 }
 
 .landing .cont-card{
     display: flex;
-    /* align-items: right; */
     justify-content:center;
     flex-wrap: wrap;
 }
