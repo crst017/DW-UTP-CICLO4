@@ -2,7 +2,7 @@
 // import Footer from './components/Footer';
 import React from 'react';
 import './Landing.css';
-import adv1 from '../img/addbanner.jpg';
+import adv1 from './img/addbanner.jpg';
 
 export default function Landing() {
     return (
