@@ -1,0 +1,35 @@
+.registro select {
+    margin: 15px 0px;
+    width: 100%;
+}
+
+.doble-col {
+    display: flex;
+    justify-content: center;
+}
+
+.doble-col label {
+    width: 50%;
+
+}
+
+.doble-col button {
+    width: 120px;
+    margin: 30px 20px 10px;
+    background-color: #087990;
+}
+
+.registro .solo {
+    width: 50%;
+}
+
+.form-control {
+    margin: 15px 0px;
+}
+
+.App .card.registro {
+    border-color: #087990;
+}
+.my-5 {
+    padding-bottom: 40px;
+}
