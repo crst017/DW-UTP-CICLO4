@@ -1,11 +1,8 @@
-var mongoose = require("mongoose");
-// var Company = mongoose.model('Company')
-// var Service = mongoose.model('Service')
+const mongoose = require("mongoose");
 
-var companySchema = new mongoose.Schema({
-    idCompany : { type: Schema.ObjectId, ref: "Company"},
+const companySchema = new mongoose.Schema({
     companyName: String,
-    idService : { type: Schema.ObjectId, ref: "Service"}
+    idService : { type: mongoose.Schema.ObjectId, ref: "Service"}
 });
 
 module.exports = mongoose.model("Company", companySchema);

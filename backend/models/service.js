@@ -1,12 +1,11 @@
-var mongoose = require("mongoose");
-var indicator = mongoose.model('indicator');
+const mongoose = require("mongoose");
 
-var serviceSchema = new mongoose.Schema({
+const serviceSchema = new mongoose.Schema({
     serviceName: String,
-    idIndicator: { type: Schema.ObjectId, ref: 'indicator' }
+    idIndicator: { type: Schema.ObjectId, ref: 'Indicator' }
 });
 
-module.exports = mongoose.model("service", serviceSchema);
+module.exports = mongoose.model("Service", serviceSchema);
 
 
 
