@@ -5,7 +5,6 @@ const dbConnection = require("./db/db");
 require("dotenv").config();
 
 // Aqui van los imports de las rutas
-
 const app = express();
 
 app.use(express.json());
