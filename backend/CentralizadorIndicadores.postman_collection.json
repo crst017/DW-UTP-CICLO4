@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "e83d366f-e773-4c19-899b-bbf134e7d446",
+		"name": "CentralizadorIndicadores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Natalia Ortiz\",\r\n    \"email\": \"natalia@gmail.com\",\r\n    \"userName\": \"natalia\",\r\n    \"password\": \"1234\",\r\n    \"idCompany\": \"2342342545\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/user/newUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user",
+								"newUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA5ZmJiNDgwMzk1NjZhZTA3NDBmNzciLCJ1c2VyTmFtZSI6Im5hdGFsaWEiLCJpYXQiOjE2MjgwNDQ1ODV9.yFINDhrcWkMtGU34kQvMbvfujr03C5cdM5NUmSefE7w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/user/getUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user",
+								"getUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"610a014e4b37ed6bbcdc56e8\",\r\n    \"fullName\": \"Pepita\",\r\n    \"email\": \"pepita@gmail.com\",\r\n    \"userName\": \"pepita\",\r\n    \"password\": \"1234\",\r\n    \"idCompany\": \"2342342545\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/user/editUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user",
+								"editUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/user/deleteUser/6109ff10c6bd20658421587b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user",
+								"deleteUser",
+								"6109ff10c6bd20658421587b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"natalia\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Indicator",
+			"item": [
+				{
+					"name": "New Indicator",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"indicatorName\": \"Peticiones resueltas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/indicator/newIndicator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"indicator",
+								"newIndicator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Indicators",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/indicator/getIndicators",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"indicator",
+								"getIndicators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Indicator",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"610a045be6e12f37e85892e8\",\r\n    \"indicatorName\": \"Nro Peticiones resueltas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/indicator/editIndicator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"indicator",
+								"editIndicator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Indicator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
