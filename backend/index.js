@@ -6,6 +6,7 @@ const dbConnection = require("./db/db");
 const User = require("./routes/user");
 const Auth = require("./routes/auth");
 const Indicator = require("./routes/indicator")
+const Service = require("./routes/service")
 
 require("dotenv").config();
 
@@ -17,6 +18,10 @@ app.use(cors());
 app.use("/api/user/", User);
 app.use("/api/auth/", Auth);
 app.use("/api/indicator", Indicator);
+app.use("/api/service", Service);
+
+
+
 
 app.listen(process.env.PORT, () =>
   console.log("Backend server running on port: " + process.env.PORT)
