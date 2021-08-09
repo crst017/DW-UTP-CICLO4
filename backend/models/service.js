@@ -9,5 +9,3 @@ module.exports = mongoose.model("Service", serviceSchema);
 
 
 
-
-

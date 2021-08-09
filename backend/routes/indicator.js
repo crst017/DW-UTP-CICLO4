@@ -26,6 +26,8 @@ router.get('/getIndicators', async(req, res) => {
     const indicator = await Indicator.find()
     if (!indicator) 
         return res.status(401).send("Process failed: Error fetching indicator information");
+    
+  
     return res.status(200).send({ indicator });
 })
 
