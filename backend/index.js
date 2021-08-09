@@ -8,6 +8,7 @@ const Auth = require("./routes/auth");
 const Indicator = require("./routes/indicator");
 const Register = require("./routes/register");
 const Service = require("./routes/service");
+const Company = require("./routes/company");
 
 require("dotenv").config();
 
@@ -19,7 +20,7 @@ app.use(cors());
 app.use("/api/user/", User);
 app.use("/api/auth/", Auth);
 app.use("/api/indicator", Indicator);
-app.use("/api/company", Company);    //add company route in the app
+app.use("/api/company", Company);
 app.use("/api/register", Register);    
 app.use("/api/service", Service);
 
