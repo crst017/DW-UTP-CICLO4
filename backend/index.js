@@ -6,10 +6,8 @@ const dbConnection = require("./db/db");
 const User = require("./routes/user");
 const Auth = require("./routes/auth");
 const Indicator = require("./routes/indicator");
-const Company = require("./routes/company") ;  // Ruta para coleccioncd company
 const Register = require("./routes/register");
-const Indicator = require("./routes/indicator")
-const Service = require("./routes/service")
+const Service = require("./routes/service");
 
 require("dotenv").config();
 
