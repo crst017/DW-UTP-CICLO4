@@ -14,7 +14,8 @@ router.post("/newService", async(req, res) => {
         return res.status(401).send("Process failed: Service already exists")
 
     const service = new Service({
-        serviceName: req.body.serviceName
+        serviceName: req.body.serviceName,
+        idCompany: req.body.idCompany
     })
 
     const result = await service.save();

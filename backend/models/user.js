@@ -7,8 +7,7 @@ const userSchema = new mongoose.Schema({
     email: String,
     userName: String,
     password: String,
-    // idCompany: {type: mongoose.Schema.ObjectId, ref: 'company'},
-    idCompany: String,
+    idCompany: {type: mongoose.Schema.ObjectId, ref: 'Company'},
     role: {type: String, default: 'user'}
 });
 

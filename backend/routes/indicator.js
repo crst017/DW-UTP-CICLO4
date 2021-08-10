@@ -5,15 +5,20 @@ const mongoose = require("mongoose");
 const Indicator = require('../models/indicator');
 
 router.post("/newIndicator", async(req, res) => {
-    if (!req.body.indicatorName)
+    if (!req.body.indicatorName || !req.body.idService )
         return res.status(401).send("Process failed: Incomplete data")
 
-    let indicatorName = await Indicator.findOne({indicatorName: req.body.indicatorName})
-    if (indicatorName)
+    let indicatorExists = await Indicator.findOne({ $and: [ 
+        { indicatorName: req.body.indicatorName},
+        { idService: req.body.idService }
+    ]});
+
+    if (indicatorExists)
         return res.status(401).send("Process failed: Indicator already exists")
 
     const indicator = new Indicator({
-        indicatorName: req.body.indicatorName
+        indicatorName: req.body.indicatorName,
+        idService: req.body.idService
     })
 
     const result = await indicator.save();
