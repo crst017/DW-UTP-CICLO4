@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const Indicator = require('../models/indicator');
 
 router.post("/newIndicator", async(req, res) => {
-<<<<<<< HEAD
     if (!req.body.indicatorName || !req.body.idService )
         return res.status(401).send("Process failed: Incomplete data")
 
@@ -16,14 +15,6 @@ router.post("/newIndicator", async(req, res) => {
 
     if (indicatorExists)
         return res.status(401).send("Process failed: Indicator already exists")
-=======
-    if (!req.body.indicatorName)
-        return res.status(401).json({message: "Process failed: Incomplete data"})
-
-    let indicatorName = await Indicator.findOne({indicatorName: req.body.indicatorName})
-    if (indicatorName)
-        return res.status(401).json({message: "Process failed: Indicator already exists"})
->>>>>>> natalia
 
     const indicator = new Indicator({
         indicatorName: req.body.indicatorName,
@@ -32,13 +23,8 @@ router.post("/newIndicator", async(req, res) => {
 
     const result = await indicator.save();
     if (!result) 
-<<<<<<< HEAD
-        return res.status(401).send("Process failed: Error registering indicator")
-    return res.status(200).send(indicator)
-=======
         return res.status(401).json({message: "Process failed: Error registering indicator"})
     return res.status(200).send({indicator})
->>>>>>> natalia
 })
 
 router.get('/getIndicators', async(req, res) => {
