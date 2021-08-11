@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Indicator = require('../models/indicator');
 
 router.post("/newIndicator", async(req, res) => {
+<<<<<<< HEAD
     if (!req.body.indicatorName || !req.body.idService )
         return res.status(401).send("Process failed: Incomplete data")
 
@@ -15,6 +16,14 @@ router.post("/newIndicator", async(req, res) => {
 
     if (indicatorExists)
         return res.status(401).send("Process failed: Indicator already exists")
+=======
+    if (!req.body.indicatorName)
+        return res.status(401).json({message: "Process failed: Incomplete data"})
+
+    let indicatorName = await Indicator.findOne({indicatorName: req.body.indicatorName})
+    if (indicatorName)
+        return res.status(401).json({message: "Process failed: Indicator already exists"})
+>>>>>>> natalia
 
     const indicator = new Indicator({
         indicatorName: req.body.indicatorName,
@@ -23,14 +32,19 @@ router.post("/newIndicator", async(req, res) => {
 
     const result = await indicator.save();
     if (!result) 
+<<<<<<< HEAD
         return res.status(401).send("Process failed: Error registering indicator")
     return res.status(200).send(indicator)
+=======
+        return res.status(401).json({message: "Process failed: Error registering indicator"})
+    return res.status(200).send({indicator})
+>>>>>>> natalia
 })
 
 router.get('/getIndicators', async(req, res) => {
     const indicator = await Indicator.find()
     if (!indicator) 
-        return res.status(401).send("Process failed: Error fetching indicator information");
+        return res.status(401).json({message: "Process failed: Error fetching indicator information"});
     
   
     return res.status(200).send(indicator);
@@ -47,35 +61,35 @@ router.get('/getIndicator/:idService', async(req, res) => {
 router.put('/editIndicator', async(req, res) => {
     if (!req.body._id || 
         !req.body.indicatorName)
-        return res.status(401).send("Process failed: Incomplete data")
+        return res.status(401).json({message: "Process failed: Incomplete data"})
 
     const validId = mongoose.isValidObjectId(req.body._id);
     if (!validId) 
-        return res.status(401).send("Process failed: Invalid Id");
+        return res.status(401).json({message: "Process failed: Invalid Id"});
     
     const findIndicator = await Indicator.findById(req.body._id)
     if(!findIndicator)
-        return res.status(401).send("Process failed: Invalid indicator")
+        return res.status(401).json({message: "Process failed: Invalid indicator"})
 
     const indicator = await Indicator.findByIdAndUpdate(req.body._id, {
         indicatorName: req.body.indicatorName
     }, { new: true })
     if (!indicator) 
-        return res.status(401).send("Process failed: Error updating indicator")
+        return res.status(401).json({message: "Process failed: Error updating indicator"})
     return res.status(200).send({indicator})
 })
 
 router.delete('/deleteIndicator/:_id?', async(req, res) => {
     const validId = mongoose.isValidObjectId(req.body._id);
     if (!validId) 
-        return res.status(401).send("Process failed: Invalid Id");
+        return res.status(401).json({ message: "Process failed: Invalid Id"});
     const findIndicator = await Indicator.findById(req.params._id)
     if(!findIndicator)
-        return res.status(401).send("Process failed: Invalid indicator")
+        return res.status(401).json({message: "Process failed: Invalid indicator"})
     const indicator = await Indicator.findByIdAndDelete(req.params._id)
     if (!indicator)
-        return res.status(401).send("Process failed: Error deleting indicator")
-    return res.status(200).send({result: "Process successfull: Indicator deleted"})
+        return res.status(401).json({message: "Process failed: Error deleting indicator"})
+    return res.status(200).json({message: "Process successfull: Indicator deleted"})
 })
 
 module.exports = router;
