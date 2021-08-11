@@ -9,6 +9,7 @@ import IndicadorVistaCompleta from './components/IndicadorVistaCompleta';
 import Filtro from './components/Filtro';
 import Tabla from './components/Tabla';
 import NuevoRegistro from './components/NuevoRegistro';
+import EditarRegistros from './components/EditarRegistros';
 
 import React from 'react';
 import { createBrowserHistory } from 'history'
@@ -37,6 +38,12 @@ function App() {
           <Route path="/nuevo">
             <NuevoRegistro></NuevoRegistro>
           </Route>
+
+          <Route path="/editar">
+            <EditarRegistros></EditarRegistros>
+          </Route>
+
+
 
           <Route path="/landing">
             <Landing></Landing>

@@ -1,6 +1,7 @@
-{ "scripts": {
-  "start": "nodemon index"
-},
+{
+  "scripts": {
+    "start": "nodemon index"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

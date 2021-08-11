@@ -25,7 +25,7 @@ const Interfaz = () => {
                     <p>Consulte registros históricos</p>
                 </a>
 
-                <a className="card" href="/">
+                <a className="card" href="/editar">
                 <div className="img-cont">
                         <img className="img" src={img3} alt="" />
                     </div>
