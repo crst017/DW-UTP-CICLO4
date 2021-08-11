@@ -45,3 +45,8 @@ border-top-right-radius: 0;
     background-color:#087990;
     border-color:#6c757d;
 }
+
+.alertaTask {
+    width: 90%;
+    margin-top: 10px;
+}

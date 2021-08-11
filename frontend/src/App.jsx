@@ -38,15 +38,15 @@ function App() {
             <NuevoRegistro></NuevoRegistro>
           </Route>
 
-          <Route path="/landing">
+          <Route path="/" exact={true}>
             <Landing></Landing>
           </Route>
 
           <Route path="/interfaz" component={Interfaz}/>
           {/* <Router path = "/landing" component = {Landing}/> */}
-          <Route path="/">
+          {/* <Route path="/">
             <Interfaz/>
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
       <Footer />

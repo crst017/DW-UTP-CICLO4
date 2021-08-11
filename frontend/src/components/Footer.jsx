@@ -5,7 +5,7 @@ const Footer = () => {
     return (
 
         <footer className="d-flex justify-content-center">
-            <div class="wrapperr col-9">
+            <div className="wrapperr col-9">
                 <nav>
                     <span href = "/" > Privacidad </span> 
                     <span href = "/" > Terminos y Condiciones </span> 
