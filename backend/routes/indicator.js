@@ -24,7 +24,7 @@ router.post("/newIndicator", async(req, res) => {
     const result = await indicator.save();
     if (!result) 
         return res.status(401).send("Process failed: Error registering indicator")
-    return res.status(200).send({indicator})
+    return res.status(200).send(indicator)
 })
 
 router.get('/getIndicators', async(req, res) => {
@@ -33,7 +33,15 @@ router.get('/getIndicators', async(req, res) => {
         return res.status(401).send("Process failed: Error fetching indicator information");
     
   
-    return res.status(200).send({ indicator });
+    return res.status(200).send(indicator);
+});
+
+
+router.get('/getIndicator/:idService', async(req, res) => {
+    const indicator = await Indicator.find({idService: req.params.idService})
+    if (!indicator) 
+        return res.status(401).send("Process failed: Error fetching indicator information");
+    return res.status(200).send(indicator);
 })
 
 router.put('/editIndicator', async(req, res) => {

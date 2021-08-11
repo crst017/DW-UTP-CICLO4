@@ -20,7 +20,7 @@ router.post("/newCompany", async(req, res) => {
     const result = await company.save();
     if (!result) 
         return res.status(401).send("Process failed: Error registering company")
-    return res.status(200).send({company})
+    return res.status(200).send(company)
 })
 
 // Metodo get para obtener información de la compañia
@@ -28,7 +28,7 @@ router.get('/getCompany', async(req, res) => {
     const company = await Company.find()
     if (!company) 
         return res.status(401).send("Process failed: Error fetching company information");
-    return res.status(200).send({ company });
+    return res.status(200).send(company );
 })
 
 // Metodo put para editar información del nombre de la compañia
@@ -50,7 +50,7 @@ router.put('/editCompany', async(req, res) => {
     }, { new: true })
     if (!company) 
         return res.status(401).send("Process failed: Error updating company")
-    return res.status(200).send({company})
+    return res.status(200).send(company)
 })
 
 // Metodo delete para borrar información de la compañia

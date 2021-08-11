@@ -3,6 +3,7 @@ header.header {
     border-bottom: solid 2px #087990;
     background-color: #087990;
     color: white;
+    padding: 0px 10px
 }
 
 header nav {

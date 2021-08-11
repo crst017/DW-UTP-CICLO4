@@ -21,14 +21,14 @@ router.post("/newService", async(req, res) => {
     const result = await service.save();
     if (!result) 
         return res.status(401).send("Process failed: Error registering service")
-    return res.status(200).send({service})
+    return res.status(200).send(service)
 })
 
 router.get('/getService', async(req, res) => {
     const service = await Service.find()
     if (!service) 
         return res.status(401).send("Process failed: Error fetching service information");
-    return res.status(200).send({ service });
+    return res.status(200).send(service);
 })
 
 

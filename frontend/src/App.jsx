@@ -12,7 +12,7 @@ import NuevoRegistro from './components/NuevoRegistro';
 
 import React from 'react';
 import { createBrowserHistory } from 'history'
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { Router, Route, Switch} from 'react-router-dom'
 
 import './components/login.css'
 

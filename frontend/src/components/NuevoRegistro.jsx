@@ -1,42 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
+import uniqid from 'uniqid';
 import './NuevoRegistro.css'
 
 const NuevoRegistro = () => {
+
+    const [ company, setCompany ] = useState({});
+    const [ services, setServices ] = useState([]);
+    const [ indicators, setIndicators ] = useState([]);
+    const [ idService, setidService ] = useState("");
+    const [ idIndicator, setidIndicator ] = useState("");
+    const [ idCompany, setidCompany] = useState();
+    const [ year, setYear] = useState("");
+    const [ month, setMonth] = useState("");
+    const [ compliance, setCompliance] = useState();
+
+    const getCompany = async () => {
+        let company = await axios.get('http://localhost:3001/api/company/getCompany');
+        setCompany(company.data[0]);
+        setidCompany(company.data[0]._id);
+    }
+
+    const getServices = async () => {
+        let services = await axios.get('http://localhost:3001/api/service/getService');
+        services = services.data;
+        services.forEach( service => service.key = uniqid());
+        setServices(services);
+    }
+
+    const getIndicators = async (event) => {
+
+        const serviceFind = services.find( service => service.serviceName === event.target.value);
+        const idService = serviceFind._id;
+        setidService(idService);
+
+        let indicators = await axios.get(`http://localhost:3001/api/indicator/getIndicator/${idService}`);
+        indicators = indicators.data;
+        indicators.forEach( indicator => indicator.key = uniqid());
+        setIndicators(indicators);
+    }
+
+    const getIndicatorID = async (event) => {
+
+        const indicatorFind = indicators.find( indicator => indicator.indicatorName === event.target.value);
+        const idIndicator = indicatorFind._id;
+        setidIndicator(idIndicator);
+    }
+
+    const chargeData = () => {
+        getCompany();
+        getServices();
+    }
+
+    const createRegister = async (e) => {
+        e.preventDefault();
+        const comments =  document.querySelector('.comments').value || '';
+        
+        if (!idCompany ||
+            !idService ||
+            !idIndicator ||
+            !year ||
+            !month ||
+            !compliance) 
+            return console.log("NOP")
+        
+        const body = { 
+            "idCompany" : idCompany, 
+            "idService" : idService,
+            "idIndicator" : idIndicator,
+            "year" : year,
+            "month" : month,
+            "compliance" : Number(compliance),
+            "comments" : comments,
+        }
+
+        const creado = await axios.post('http://localhost:3001/api/register/newRegister', body);
+        console.log(creado.status)
+        // TO DO 
+        // Notificacion de registro creado o no creado con el creado status
+    }
+
+    window.onload = chargeData;
 
     return (
 
         <div className="container-fluid col-6 my-5 registro">
         
         <h2>Registrar nuevo indicador</h2>
-        <section class="container-fluid card my-5 g-0 p-4 px-5 registro">
+        <form className="container-fluid card my-4 g-0 p-4 px-5 registro" 
+            onSubmit={ (e) => createRegister(e) }>
 
-            <h3 class="card-header font-weight-bold mt-2 mb-4 text-center">Empresa</h3>
+            <h3 className="card-header font-weight-bold mt-2 mb-4 text-center">{company.companyName}</h3>
             
             <div className="doble-col">
-            <label class="font-weight-bold mb-0 mt-2">Servicio
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Servicio</option>
-                <option value="2021">Telefonia</option>
-                <option value="2020">Internet</option>
-                <option value="2019">Television</option>
+            <label className="font-weight-bold mb-0 mx-2">Servicio
+            <select id="service" className="form-select" aria-label="Default select example" defaultValue={""} required onChange={ (e) => getIndicators(e) }>
+                <option disabled={true} ></option>
+                    {   services.map( service => <option value={service.serviceName} key={service.key} >{service.serviceName}</option> )}
             </select>
             </label>
 
-            <label class="font-weight-bold mb-0 mt-2">Indicador
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Indicador</option>
-                <option value="2021">Retencion clientes</option>
-                <option value="2020">Peticiones resueltas</option>
-                <option value="2019">Solución mesa ayuda</option>
+            <label className="font-weight-bold mb-0 mx-2">Indicador
+            <select className="form-select" aria-label="Default select example" defaultValue={""} required onChange={ (e) => getIndicatorID(e) }>
+                <option disabled={true}></option>
+                {   indicators.map( indicator => <option value={indicator.serviceName} key={indicator.key} >{indicator.indicatorName}</option> )}
             </select>
             </label>
             </div>
 
             <div className="doble-col">
                 
-                <label class="font-weight-bold mb-0">Año
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Año</option>
+                <label className="font-weight-bold mx-2">Año
+                <select className="form-select" aria-label="Default select example" defaultValue={""} required onChange = { e => setYear(e.target.value) }>
+                    <option defaultValue="Año" disabled={true}></option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
@@ -44,9 +120,9 @@ const NuevoRegistro = () => {
                 </select>
                 </label>
             
-            <label class="font-weight-bold mb-0">Mes
-            <select class="form-select px-3" aria-label="Default select example">
-                <option selected>Mes</option>
+            <label className="font-weight-bold mx-2">Mes
+            <select className="form-select px-3" aria-label="Default select example" defaultValue={""} required onChange = { e => setMonth(e.target.value) }>
+                <option defaultValue="Mes" disabled={true}></option>
                 <option value="enero">Enero</option>
                 <option value="febrero">Febrero</option>
                 <option value="marzo">Marzo</option>
@@ -63,24 +139,26 @@ const NuevoRegistro = () => {
             </label>
             </div> 
             
-            <div className="w-50">
-                <label class="font-weight-bold">% Cumplimiento
+            <div className="w-50 mx-2">
+                <label className="font-weight-bold">% Cumplimiento
                     <div className="form-floating">
-                        <input type="email" className="form-control" id="floatingEmail" placeholder="0% - 100%" required></input>
-                        <label htmlFor="floatingEmail">Cumplimiento</label>
+                        <input type="text" className="form-control" id="floatingName" placeholder="Cumplimiento"onChange = { e => setCompliance(e.target.value) } required ></input>
+                        <label htmlFor="floatingName">Cumplimiento</label>
+                        {/* <input type="range" min="0" max="100" step="1"></input> */}
                     </div>
                 </label>
             </div>
 
-            <label for="exampleFormControlTextarea1">Comentarios</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-
+            <label htmlFor="exampleFormControlTextarea1" className="mx-2">Comentarios
+                <textarea className="form-control comments" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </label>
+            
             <div className="doble-col">
-                <button className="btn btn-secondary">Guardar</button>
-                <button className="btn btn-secondary">Cancelar</button>
+                <button className="btn btn-secondary" type="submit">Guardar</button>
+                <button className="btn btn-secondary" type="reset">Cancelar</button>
             </div>
             
-        </section>
+        </form>
         </div>
     )
 }

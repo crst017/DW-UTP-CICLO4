@@ -21,7 +21,8 @@ router.post('/newRegister', async ( req, res) => {
         month : req.body.month, 
         idService : req.body.idService, 
         idIndicator : req.body.idIndicator, 
-        compliance : req.body.compliance
+        compliance : req.body.compliance,
+        comments : req.body.comments
     });
 
     try {
