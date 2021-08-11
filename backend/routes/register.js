@@ -38,7 +38,7 @@ router.get('/getRegisters', async(req, res) => {
     const registers = await Register.find();
     if (!registers) 
         return res.status(401).send("Process failed: Error fetching registers");
-    return res.status(200).send({ registers });
+    return res.status(200).send( registers );
 });
 
 router.put('/editRegister', async(req, res) => {
@@ -71,7 +71,7 @@ router.put('/editRegister', async(req, res) => {
     }, { new: true })
     if (!register) 
         return res.status(401).send("Process failed: Error updating register")
-    return res.status(200).send({register})
+    return res.status(200).send(register)
 });
 
 router.delete('/deleteRegister/:_id', async(req, res) => {
