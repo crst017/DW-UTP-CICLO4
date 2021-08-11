@@ -76,10 +76,14 @@ const NuevoRegistro = () => {
 
         const creado = await axios.post('http://localhost:3001/api/register/newRegister', body);
         console.log(creado.status)
-        // TO DO 
-        // Notificacion de registro creado o no creado con el creado status
+        if (creado.status === 200) {
+            resetForm();
+        }  
     }
-
+    
+    const resetForm = () => {
+        document.querySelector('.comments').value = "Registro guardado con éxito";
+    }
     window.onload = chargeData;
 
     return (
