@@ -43,17 +43,17 @@ function App() {
             <EditarRegistros></EditarRegistros>
           </Route>
 
-
-
           <Route path="/landing">
             <Landing></Landing>
           </Route>
 
           <Route path="/interfaz" component={Interfaz}/>
-          {/* <Router path = "/landing" component = {Landing}/> */}
-          <Route path="/">
+          <Router path = "/landing" component = {Landing}/>
+
+          <Route exact path="/">
             <Interfaz/>
           </Route>
+
         </Switch>
       </Router>
       <Footer />
