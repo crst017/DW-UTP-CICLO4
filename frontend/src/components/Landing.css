@@ -13,18 +13,18 @@
     flex-wrap: wrap;
 }
 .landing .img-fluid {
-    max-height: 600px;
+    max-height: 240px;
     width: 100%;
     object-fit: cover;
 }
 .landing .card.card-home {
-    margin-top:  40px;
+    margin-top:  30px;
 }
 
-.landing a.card{
+.landing span.card{
     display: block;
-    width: 200px;
-    height: 200px;
+    width: 350px;
+    height: 250px;
     background-color: #087990;
     display: flex;
     flex-direction: column;
