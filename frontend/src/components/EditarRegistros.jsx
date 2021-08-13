@@ -66,8 +66,6 @@ const EditarRegistros = () => {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                <label for="exampleInputEmail1" className="form-label">Compañia</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                                 <label for="exampleInputEmail1" className="form-label">Servicio</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                                 <label for="exampleInputEmail1" className="form-label">Indicador</label>

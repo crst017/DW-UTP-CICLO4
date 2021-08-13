@@ -1,25 +1,63 @@
 import React from 'react';
+import axios from 'axios';
 import './EditarFila.css';
 
 const FilaTablaEditar = (props) => {
 
     const { register } = props;
 
-    const eliminarDatos = async () => {
-        console.log("okok")
+    // const eliminarDatos = async () => {
+    //     console.log(register.idService)
+    // }
+
+
+    const eliminarDatos = async (event) => {
+        let retorno = await axios.delete(`http://localhost:3001/api/register/deleteRegister/${register._id}`);
+        console.log(retorno)
+    }
+
+
+
+    const crearModal = async (event) => {
+        return (
+        <div className="container">
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Editar datos</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <label for="exampleInputEmail1" className="form-label">Servicio</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                            <label for="exampleInputEmail1" className="form-label">Indicador</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        )
     }
 
 
     return (
         <tr>
-            <td>{register.idService}</td>
+            <td>{register._id}</td>
             <td>{register.idService}</td>
             <td>{register.month}</td>
             <td>
                 <div className="text-center">
                     <div className="btn-group">
-                        <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                        <button className="btn btn-danger btnEditar" onclick={eliminarDatos() }>Eliminar</button>
+                        <button className="btn btn-primary btnEditar" onClick={crearModal }>Editar</button>
+                        {/* <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button> */}
+                        <button className="btn btn-danger btnEditar" onClick={eliminarDatos }>Eliminar</button>
                     </div>
                 </div>
             </td>
