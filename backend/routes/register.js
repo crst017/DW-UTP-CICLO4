@@ -43,11 +43,10 @@ router.get('/getRegisters', async(req, res) => {
 
 router.get('/getRegisters/:idCompany', async(req, res) => {
     const registers = await Register.find({ idCompany : req.params.idCompany})
-        .populate('idService')
+        .populate(['idService','idIndicator'])
         .exec();
     if (!registers) 
         return res.status(401).send("Process failed: Error fetching registers for this company");
-    console.log(registers)
     return res.status(200).send( registers );
 });
 
