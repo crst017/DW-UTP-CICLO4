@@ -12,17 +12,15 @@ import NuevoRegistro from './components/NuevoRegistro';
 import EditarRegistros from './components/EditarRegistros';
 
 import React from 'react';
-import { createBrowserHistory } from 'history'
-import { Router, Route, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './components/login.css'
 
 function App() {
-  const history = createBrowserHistory();
   return (
     <div className="App">
       <Header/>
-      <Router history={history}>
+      <Router>
         <Switch>
           <Route path='/login' component={FormLogin} />
           <Route path="/registro" component={FormRegistro} />

@@ -7,21 +7,29 @@ import './Tabla.css'
 const Tabla = () => {
 
     const [ registers, setRegisters ] = useState([]);
+    // const [ servicios , setServicios ] = useState([]);
     const items = []
+    // const serviceNames = [];
 
     const getRegisters = async () => {
+        
         const registersFetch = await axios.get('http://localhost:3001/api/register/getRegisters');
         const dataRegisters = registersFetch.data;
         dataRegisters.forEach( register => register.key = uniqid());
         setRegisters(dataRegisters);
+
+        // for (const register of dataRegisters) {
+        //     const service = await axios.get(`http://localhost:3001/api/service/getService/${register.idService}`);
+        //     serviceNames.push(service.data.serviceName);
+        // }   
+
+        // console.log(serviceNames)
     }
     
     const createIndicator = () => {
-        console.log("go")
         for (const register of registers) {
             items.push(<IndicadorVistaPrevia className="row" key={register._id} register={ register }/>)
         }
-        console.log(items)
     }
 
     window.onload = getRegisters;
@@ -37,19 +45,11 @@ const Tabla = () => {
                     <span className="col-2">Año</span>
                 </div>
                 {
-                    registers.length !== 0 ? createIndicator() : console.log()
+                    (serviceNames.length !== 0) ? createIndicator() : console.log()
                 }
                 {
                     items
                 }
-                {/* <IndicadorVistaPrevia className="row" indicator={ registros }/> */}
-                {/* <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
-                <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
-                <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
-                <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
-                <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia>
-                <IndicadorVistaPrevia className="row"></IndicadorVistaPrevia> */}
-
             </div>
         </section>
     )

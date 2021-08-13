@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import uniqid from 'uniqid';
 import './NuevoRegistro.css'
+import Swal from 'sweetalert2';
 
 const NuevoRegistro = () => {
 
@@ -14,6 +15,13 @@ const NuevoRegistro = () => {
     const [ year, setYear] = useState("");
     const [ month, setMonth] = useState("");
     const [ compliance, setCompliance] = useState();
+
+    const swal = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-primary'
+        },
+        buttonsStyling: false
+    });
 
     const getCompany = async () => {
         let company = await axios.get('http://localhost:3001/api/company/getCompany');
@@ -78,12 +86,26 @@ const NuevoRegistro = () => {
         console.log(creado.status)
         if (creado.status === 200) {
             resetForm();
-        }  
+            swal.fire(
+                'Creado!',
+                'El nuevo registro ha sido guardado',
+                'success'
+            );
+        } else {
+            swal.fire(
+                'Error!',
+                'El registro no pudo ser guardado',
+                'error'
+            );
+        }
     }
     
     const resetForm = () => {
-        document.querySelector('.comments').value = "Registro guardado con éxito";
+        // document.querySelector('.comments').value = "Registro guardado con éxito";
+        // TO DO
+        // Clear all the form
     }
+
     window.onload = chargeData;
 
     return (
@@ -146,7 +168,7 @@ const NuevoRegistro = () => {
             <div className="w-50 mx-2">
                 <label className="font-weight-bold">% Cumplimiento
                     <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingName" placeholder="Cumplimiento"onChange = { e => setCompliance(e.target.value) } required ></input>
+                        <input type="text" className="form-control" id="floatingName" placeholder="Cumplimiento" value="ASD" onChange = { e => setCompliance(e.target.value) } required >50</input>
                         <label htmlFor="floatingName">Cumplimiento</label>
                         {/* <input type="range" min="0" max="100" step="1"></input> */}
                     </div>
