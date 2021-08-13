@@ -13,17 +13,13 @@ const Tabla = () => {
 
     const getRegisters = async () => {
         
-        const registersFetch = await axios.get('http://localhost:3001/api/register/getRegisters');
+        const idCompany = "6112dbe26288fa269c94668f";
+        const registersFetch = await axios.get(`http://localhost:3001/api/register/getRegisters/${idCompany}`);
+
+        console.log(registersFetch)
         const dataRegisters = registersFetch.data;
         dataRegisters.forEach( register => register.key = uniqid());
         setRegisters(dataRegisters);
-
-        // for (const register of dataRegisters) {
-        //     const service = await axios.get(`http://localhost:3001/api/service/getService/${register.idService}`);
-        //     serviceNames.push(service.data.serviceName);
-        // }   
-
-        // console.log(serviceNames)
     }
     
     const createIndicator = () => {
@@ -45,7 +41,7 @@ const Tabla = () => {
                     <span className="col-2">Año</span>
                 </div>
                 {
-                    (serviceNames.length !== 0) ? createIndicator() : console.log()
+                    registers.length !== 0 ? createIndicator() : console.log()
                 }
                 {
                     items

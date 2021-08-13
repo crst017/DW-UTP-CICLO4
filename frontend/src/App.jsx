@@ -45,7 +45,7 @@ function App() {
             <Landing></Landing>
           </Route>
 
-          <Route path="/interfaz" component={Interfaz}/>
+          <Route path="/interfaz" component = {Interfaz}/>
           <Router path = "/landing" component = {Landing}/>
 
           <Route exact path="/">

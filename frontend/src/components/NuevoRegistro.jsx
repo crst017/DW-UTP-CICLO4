@@ -168,7 +168,7 @@ const NuevoRegistro = () => {
             <div className="w-50 mx-2">
                 <label className="font-weight-bold">% Cumplimiento
                     <div className="form-floating">
-                        <input type="text" className="form-control" id="floatingName" placeholder="Cumplimiento" value="ASD" onChange = { e => setCompliance(e.target.value) } required >50</input>
+                        <input type="text" className="form-control" id="floatingName" placeholder="Cumplimiento" onChange = { e => setCompliance(e.target.value) } required ></input>
                         <label htmlFor="floatingName">Cumplimiento</label>
                         {/* <input type="range" min="0" max="100" step="1"></input> */}
                     </div>
