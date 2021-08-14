@@ -80,12 +80,12 @@ router.delete('/deleteRegister/:_id', async(req, res) => {
     if (!validId) 
         return res.status(401).send("Process failed: Invalid Id");
 
-    const findRegister = Register.findById(req.params._id);
+    const findRegister = await Register.findById(req.params._id);
     console.log(req.params._id)
     if(!findRegister)
         return res.status(401).send("Process failed: Invalid register")
 
-    const register = Register.findByIdAndDelete(req.params._id)
+    const register = await Register.findByIdAndDelete(req.params._id)
     if (!register)
         return res.status(401).send("Process failed: Error deleting register")
         

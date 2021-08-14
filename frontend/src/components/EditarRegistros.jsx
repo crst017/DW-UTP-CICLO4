@@ -23,11 +23,6 @@ const EditarRegistros = () => {
         }
     }
 
-
-    const eliminarDatos = async () => {
-        console.log("okok")
-    }
-
     window.onload = getRegisters;
 
     return (
@@ -57,6 +52,8 @@ const EditarRegistros = () => {
                 </table>
 
             </div>
+
+
             <div className="container">
                 <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
@@ -79,7 +76,8 @@ const EditarRegistros = () => {
                     </div>
                 </div>
             </div>
-            <div className="container">
+
+            {/* <div className="container">
                 <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -97,7 +95,7 @@ const EditarRegistros = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
