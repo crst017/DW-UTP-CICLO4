@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './editar.css';
 import axios from 'axios';
 
+const capitalize = function( string ) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 class App extends Component {
     constructor() {
         super();
@@ -40,8 +44,8 @@ class App extends Component {
               month: data.month,
               compliance: data.compliance,
             });
-          });
-      }
+        });
+    }
 
       editTaskSend(id) {
         fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
@@ -68,19 +72,13 @@ class App extends Component {
           });
       }
 
-
-
-
-
-
-
     componentDidMount() {
         this.fetchTasks();
     }
 
-
     fetchTasks() {
-        fetch('http://localhost:3001/api/register/getRegisters')
+        const idCompany = "6112dbe26288fa269c94668f";
+        fetch(`http://localhost:3001/api/register/getRegisters/${idCompany}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ tasks: data });
@@ -88,6 +86,7 @@ class App extends Component {
             });
     }
 
+    
 
     render() {
         return (
@@ -100,10 +99,12 @@ class App extends Component {
                         <table className='indicadores'>
                             <thead className="text-center">
                                 <tr>
-                                    <th>id</th>
-                                    <th>Month</th>
-                                    <th>Year</th>
-                                    <th>Indicator</th>
+                                    <th>Servicio</th>
+                                    <th>Indicador</th>
+                                    <th>Año</th>
+                                    <th>Mes</th>
+                                    <th>Cumplimiento</th>
+                                    <th>Comentarios</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -112,10 +113,12 @@ class App extends Component {
                                     this.state.tasks.map(task => {
                                         return (
                                             <tr key={task._id}>
-                                                <td>{task._id}</td>
-                                                <td>{task.month}</td>
+                                                <td>{capitalize(task.idService.serviceName)}</td>
+                                                <td>{capitalize(task.idIndicator.indicatorName)}</td>
                                                 <td>{task.year}</td>
+                                                <td>{capitalize(task.month)}</td>
                                                 <td>{task.compliance}</td>
+                                                <td>{capitalize(task.comments)}</td>
                                                 <td>
                                                     <button  onClick={() => this.editTask(task._id)} className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                                                         <i >edit</i>
