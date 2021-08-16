@@ -1,191 +1,173 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './editar.css';
-const EditarRegistros = () => {
-    return (
-        <div className="container ">
-            
+import axios from 'axios';
 
-        <div className="titulo">
-            <h1>Editar datos </h1>
-        </div>
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            id:'',
+            year: '',
+            month: '',
+            compliance: 0,
+            tasks: []
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+
+    deleteTask(id) {
+        axios.delete(`http://localhost:3001/api/register/deleteRegister/${id}`)
+            .then(data => {
+                this.fetchTasks();
+            });
+    }
+
+    editTask(id) {
+        fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+          .then(res => res.json())
+          .then(data => {
+            this.setState({
+                id: data._id,
+              year: data.year,
+              month: data.month,
+              compliance: data.compliance,
+            });
+          });
+      }
+
+      editTaskSend(id) {
+        fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+          .then(res => res.json())
+          .then(data => {
+
+
+              const body = {
+                  "_id": this.state.id,
+                  "idCompany": data.idCompany,
+                  "year": this.state.year,
+                  "month": this.state.month,
+                  "idService": data.idService,
+                  "idIndicator": data.idIndicator,
+                  "compliance": this.state.compliance,
+              }
+              console.log(body)
+
+              axios.put(`http://localhost:3001/api/register/editRegister`, body)
+              .then(data => {
+                this.fetchTasks();
+            });
+
+          });
+      }
 
 
 
-            <div className="row tabla-datos">
-                <div className="col-lg-12">
-                    <div className="table-responsive">
-                        <table className="table table-striped table-bordered table-condensed">
-                            <thead className="text-center cabecera">
+
+
+
+
+    componentDidMount() {
+        this.fetchTasks();
+    }
+
+
+    fetchTasks() {
+        fetch('http://localhost:3001/api/register/getRegisters')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ tasks: data });
+                // console.log(this.state.tasks);
+            });
+    }
+
+
+    render() {
+        return (
+            <div>
+                <div className="container ">
+                    <div className="titulo">
+                        <h1>Editar datos </h1>
+                    </div>
+                    <div>
+                        <table className='indicadores'>
+                            <thead className="text-center">
                                 <tr>
-                                    <th>Compañia</th>
-                                    <th>Servicio</th>
-                                    <th>Indicador</th>
-                                    <th></th>
+                                    <th>id</th>
+                                    <th>Month</th>
+                                    <th>Year</th>
+                                    <th>Indicator</th>
+                                    <th>Acción</th>
                                 </tr>
-
-                        
                             </thead>
-                            <tbody className="text-center">
-                                <tr>
-                                    <td>Claro</td>
-                                    <td>telefonia</td>
-                                    <td>15.2%</td>
-                                    <td>
-                                        <div className="text-center">
-                                            <div className="btn-group">
-                                                <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                                                <button className="btn btn-danger btnEditar" data-bs-toggle="modal" data-bs-target="#Modal2">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Claro</td>
-                                    <td>telefonia</td>
-                                    <td>15.2%</td>
-                                    <td>
-                                        <div className="text-center">
-                                            <div className="btn-group">
-                                                <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                                                <button className="btn btn-danger btnEditar" data-bs-toggle="modal" data-bs-target="#Modal2">Eliminar</button>
-                                            </div>
-                                        </div>
+                            <tbody>
+                                {
+                                    this.state.tasks.map(task => {
+                                        return (
+                                            <tr key={task._id}>
+                                                <td>{task._id}</td>
+                                                <td>{task.month}</td>
+                                                <td>{task.year}</td>
+                                                <td>{task.compliance}</td>
+                                                <td>
+                                                    <button  onClick={() => this.editTask(task._id)} className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                                        <i >edit</i>
+                                                    </button>
+                                                    <button onClick={() => this.deleteTask(task._id)} className="btn btn-danger">
+                                                        <i >delete</i>
+                                                    </button>
+                                                </td>
 
 
 
-                                        
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Claro</td>
-                                    <td>telefonia</td>
-                                    <td>15.2%</td>
-                                    <td>
-                                        <div className="text-center">
-                                            <div className="btn-group">
-                                                <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                                                <button className="btn btn-danger btnEditar" data-bs-toggle="modal" data-bs-target="#Modal2">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                <div className="container">
+                                                    <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div className="modal-dialog">
+                                                            <div className="modal-content">
+                                                                <div className="modal-header">
+                                                                    <h5 className="modal-title" id="exampleModalLabel">Editar datos</h5>
+                                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div className="modal-body">
 
 
-                                <tr>
-                                    <td>Claro</td>
-                                    <td>telefonia</td>
-                                    <td>15.2%</td>
-                                    <td>
-                                        <div className="text-center">
-                                            <div className="btn-group">
-                                                <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                                                <button className="btn btn-danger btnEditar" data-bs-toggle="modal" data-bs-target="#Modal2">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                                <label for="editCompliance" className="form-label">year:</label>
+                                                                    <input type="text" onChange={e => this.setState({ year: e.target.value })} value={this.state.year} class="form-control" id="editYear"></input>
+                                                                    
+                                                                    <label for="editCompliance" className="form-label">month:</label>
+                                                                    <input type="text" onChange={e => this.setState({ month: e.target.value })} value={this.state.month} class="form-control" id="editmonth"></input>
+
+                                                                    <label for="editCompliance" className="form-label">compliance:</label>
+                                                                    <input type="number" onChange={e => this.setState({ compliance: e.target.value })} value={this.state.compliance} class="form-control" id="editCompliance"></input>
 
 
-                                <tr>
-                                    <td>Claro</td>
-                                    <td>telefonia</td>
-                                    <td>15.2%</td>
-                                    <td>
-                                        <div className="text-center">
-                                            <div className="btn-group">
-                                                <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                                                <button className="btn btn-danger btnEditar" data-bs-toggle="modal" data-bs-target="#Modal2">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
-                                <tr>
-                                    <td>Claro</td>
-                                    <td>telefonia</td>
-                                    <td>15.2%</td>
-                                    <td>
-                                        <div className="text-center">
-                                            <div className="btn-group">
-                                                <button className="btn btn-primary btnEditar" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                                                <button className="btn btn-danger btnEditar" data-bs-toggle="modal" data-bs-target="#Modal2">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                                </div>
+                                                                <div className="modal-footer">
+                                                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="button" onClick={() => this.editTaskSend(task._id)} className="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </tr>
+                                        )
+                                    })
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
-
-            <div className="container">
-                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Editar datos</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                
-                                <label for="exampleInputEmail1" className="form-label">Compañia</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
-
-
-                                <label for="exampleInputEmail1" className="form-label">Servicio</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
-
-                                <label for="exampleInputEmail1" className="form-label">Indicador</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
-
-
-                                </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div className="container">
-                <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Eliminar datos</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ¿Está seguro que desea eliminar la información?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Eliminar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-        </div>
-
-
-
-    
-    
-    )
+        )
+    }
 }
-export default EditarRegistros
+
+export default App;

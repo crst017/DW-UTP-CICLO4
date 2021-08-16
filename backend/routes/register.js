@@ -50,6 +50,23 @@ router.get('/getRegisters/:idCompany', async(req, res) => {
     return res.status(200).send( registers );
 });
 
+
+router.get('/getRegistersId/:_id', async(req, res) => {
+    const validId = mongoose.isValidObjectId(req.body._id);
+
+    if (!validId) 
+        return res.status(401).send("Process failed: Invalid Id");
+
+        
+        const findRegister = await Register.findById(req.params._id);
+        if(!findRegister)
+            return res.status(401).send("Process failed: Error fetching registers");
+        return res.status(200).send( findRegister );
+});
+
+
+
+
 router.put('/editRegister', async(req, res) => {
     console.log(req.body)
 
@@ -60,15 +77,15 @@ router.put('/editRegister', async(req, res) => {
         !req.body.idService || 
         !req.body.idIndicator|| 
         !req.body.compliance)
-        return res.status(401).send("Process failed: Incomplete data");
+        return res.status(404).send("Process failed: Incomplete data");
 
     const validId = mongoose.isValidObjectId(req.body._id);
     if (!validId) 
-        return res.status(401).send("Process failed: Invalid Id");
+        return res.status(404).send("Process failed: Invalid Id");
     
     const findRegister = Register.findById(req.body._id)
     if(!findRegister)
-        return res.status(401).send("Process failed: Invalid register")
+        return res.status(404).send("Process failed: Invalid register")
 
     const register = await Register.findByIdAndUpdate(req.body._id, {
         idCompany : req.body.idCompany,
@@ -79,7 +96,7 @@ router.put('/editRegister', async(req, res) => {
         compliance : req.body.compliance
     }, { new: true })
     if (!register) 
-        return res.status(401).send("Process failed: Error updating register")
+        return res.status(404).send("Process failed: Error updating register")
     return res.status(200).send(register)
 });
 
@@ -89,12 +106,12 @@ router.delete('/deleteRegister/:_id', async(req, res) => {
     if (!validId) 
         return res.status(401).send("Process failed: Invalid Id");
 
-    const findRegister = Register.findById(req.params._id);
+    const findRegister = await Register.findById(req.params._id);
     console.log(req.params._id)
     if(!findRegister)
         return res.status(401).send("Process failed: Invalid register")
 
-    const register = Register.findByIdAndDelete(req.params._id)
+    const register = await Register.findByIdAndDelete(req.params._id)
     if (!register)
         return res.status(401).send("Process failed: Error deleting register")
         
