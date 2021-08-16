@@ -41,6 +41,8 @@ router.get('/getRegisters', async(req, res) => {
     return res.status(200).send( registers );
 });
 
+
+// Get all the registers of a company using its id
 router.get('/getRegisters/:idCompany', async(req, res) => {
     const registers = await Register.find({ idCompany : req.params.idCompany})
         .populate(['idService','idIndicator'])
@@ -51,6 +53,7 @@ router.get('/getRegisters/:idCompany', async(req, res) => {
 });
 
 
+//Get register by its id
 router.get('/getRegistersId/:_id', async(req, res) => {
     const validId = mongoose.isValidObjectId(req.body._id);
 
