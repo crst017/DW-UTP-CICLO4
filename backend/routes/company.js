@@ -27,7 +27,7 @@ router.post("/newCompany", async(req, res) => {
 router.get('/getCompany', async(req, res) => {
     const company = await Company.find()
     if (!company) 
-        return res.status(401).send("Process failed: Error fetching company information");
+        return res.status(401).json({message: "Process failed: Error fetching company information"});
     return res.status(200).send(company );
 })
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Alert } from "@material-ui/lab";
 import "./login.css";
@@ -7,17 +7,17 @@ import { useHistory } from 'react-router-dom'
 const uri = "http://localhost:3001/api/";
 
 export default function FormRegistro() {
-
-  useEffect(() => {
-    getCompanies();
+  // const isMountedRef = useIsMountedRef();
+  useEffect(() =>   {
+    getCompanies()
     return () => {
       
     };
   }, []);
 
   const history = useHistory();
-  const registerUser = (user) => axios.post(uri + "user/newUser", user);
-  const fetchCompanies = () => axios.get(uri + "company/getCompany")
+  const registerUser = async (user) => await axios.post(uri + "user/newUser", user);
+  const fetchCompanies = async () => await axios.get(uri + "company/getCompany")
 
   const [registerData, setRegisterData] = useState({
     fullName: "",
@@ -34,8 +34,8 @@ export default function FormRegistro() {
   const onRegister = () => {
     registerUser(registerData)
       .then((res) => {
-        setSuccessmsg("User registered successfully");
-        closeAlert(3000);
+        // setSuccessmsg("User registered successfully");
+        // closeAlert(3000);
         setRegisterData({
           fullName: "",
           email: "",
@@ -57,8 +57,8 @@ export default function FormRegistro() {
   const getCompanies = () => {
     fetchCompanies()
       .then((res) => {
-        console.log(res.data.company);
-        setCompanies(res.data.company)
+        console.log(res.data);
+        setCompanies(res.data)
       })
       .catch((e) => {
         setErrormsg(e.response.data.message);  
@@ -169,7 +169,7 @@ export default function FormRegistro() {
                 } >
                 <option>Seleccione</option>
               {companies.map(company => (
-                <option key={company._id} value={company._id}
+                <option key={company._id} value={company._id.toString()}
                 >{company.companyName}</option>
               ))}
             </select>
