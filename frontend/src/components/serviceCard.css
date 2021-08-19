@@ -1,0 +1,37 @@
+#service-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+#service-card {
+    box-sizing: border-box;
+    width: 500px;
+    margin: 20px;
+    height: auto;
+}
+
+#service-header {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.fila-indicador {
+    display: flex;
+    margin: 5px;
+    align-items: center;
+}
+
+.fila-indicador p {
+    margin: 5px;
+    width: 60%;
+    text-align: left;
+}
+
+.fila-indicador button {
+    width: 85px;
+    height: 35px;
+    margin-right: 0px;
+}

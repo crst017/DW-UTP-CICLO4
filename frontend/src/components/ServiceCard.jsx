@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import './editar.css';
-import axios from 'axios';
-import ServiceCard from './ServiceCard';
-import './serviceCard.css'
+// import axios from 'axios';
+import './serviceCard.css';
+import uniqid from 'uniqid';
 
 const capitalize = function( string ) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
+
+
+
 class App extends Component {
+
     constructor() {
         super();
         this.state = {
-            id:'',
-            year: '',
-            month: '',
-            compliance: 0,
-            services: []
+            indicators: []
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -28,6 +28,7 @@ class App extends Component {
         });
     }
 
+    // console.log(service)
 
 //     deleteTask(id) {
 //         axios.delete(`http://localhost:3001/api/register/deleteRegister/${id}`)
@@ -74,40 +75,38 @@ class App extends Component {
 //           });
 //       }
 
-    async componentDidMount() {
-        this.fetchServices();
+    componentDidMount() {
+        this.fetchIndicators();
     }
 
-    fetchServices() {
-        const idCompany = "6112dbe26288fa269c94668f";
-        fetch(`http://localhost:3001/api/service/getServices/${idCompany}`)
+    fetchIndicators() {
+        const idService = this.props.service._id;
+        console.log(idService);
+        fetch(`http://localhost:3001/api/indicator/getIndicator/${idService}`)
             .then(res => res.json())
             .then(data => {
-                this.setState({ services: data });
+                this.setState({ indicators: data });
+                console.log(this.state.indicators);
             });
     }
 
-    createCards() {
-        console.log(this.state.services)
-        for (const service of this.state.services) {
-            console.log(service, "ejecuta");
-            return (
-                <ServiceCard className="row" key={service._id} service = { service }/>
-            )
-        }
-    }
-    
-
     render() {
         return (
-            <div id="service-container" className="col-9">
-                {
-                    this.state.services.map( service => {
-                        return (
-                            <ServiceCard className="row" key={service._id} service = { service }/>
-                        )
-                    }) 
-                }   
+            <div className="card" id="service-card">
+                <h5 className="card-header" id="service-header">{this.props.service.serviceName}</h5>
+                <div className="card-body">
+                    {
+                        this.state.indicators.map ( indicator => {
+                            return (
+                                <div className="fila-indicador" key={ uniqid() }>
+                                    <p className="card-text">{indicator.indicatorName}</p>
+                                    <button className="btn btn-primary">Editar</button>
+                                    <button className="btn btn-danger">Eliminar</button>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         )
     }
