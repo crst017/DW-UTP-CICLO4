@@ -2,11 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 
 const Header = () => {
-  const [loged, setLoged] = useState();
+  const [loged, setLoged] = useState(!!localStorage.getItem("token"));
 
   useEffect(() => {
     setLoged(!!localStorage.getItem("token"));
-  });
+    if (loged) {
+      document.getElementById('sesion').innerHTML = 'Cerrar sesión';
+    } else {
+      document.getElementById('sesion').innerHTML = 'Iniciar sesión';
+    }
+  }, [loged]);
+
+  const handleSesion = () => {
+    if (loged) {
+      localStorage.removeItem('token')
+    }
+  }
 
   return (
     <header className="header col-12 d-flex justify-content-center">
@@ -16,21 +27,21 @@ const Header = () => {
         </a>
 
         <nav className="d-flex align-items-center mt-2 mt-md-0 ms-md-auto">
-          {!loged ? (
+          {/* {!loged ? ( */}
             <a
               className="me-3 px-3 text-light text-decoration-none"
-              href="/login"
+              href="/login" id="sesion" onClick={() => handleSesion()}
             >
               Iniciar sesión
             </a>
-          ) : (
-            <a
+          {/* ) : ( */}
+            {/* <a
               className="me-3 px-3 text-light text-decoration-none"
               href="/" onClick={localStorage.removeItem('token')}
             >
               Cerrar sesión
-            </a>
-          )}
+            </a> */}
+          {/* )} */}
 
           <a
             className="me-3 px-3 text-light text-decoration-none"
