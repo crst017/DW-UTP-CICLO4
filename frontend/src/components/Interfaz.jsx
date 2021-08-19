@@ -33,6 +33,14 @@ const Interfaz = () => {
                     <p>Ingresar solo como administrador</p>
                 </a>
 
+                <a className="card" href="/editarServicio">
+                <div className="img-cont">
+                        <img className="img" src={img3} alt="" />
+                    </div>
+                    <h2>Editar Servicios</h2>
+                    <p>Ingresar solo como administrador</p>
+                </a>
+
             </div>
 
     )

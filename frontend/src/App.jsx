@@ -9,6 +9,7 @@ import Filtro from './components/Filtro';
 import Tabla from './components/Tabla';
 import NuevoRegistro from './components/NuevoRegistro';
 import EditarRegistros from './components/EditarRegistros';
+import EditarServicios from './components/EditarServicios';
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -37,6 +38,10 @@ function App() {
 
           <Route path="/editar">
             <EditarRegistros></EditarRegistros>
+          </Route>
+
+          <Route path="/editarServicio">
+            <EditarServicios></EditarServicios>
           </Route>
 
           <Route path="/landing">
