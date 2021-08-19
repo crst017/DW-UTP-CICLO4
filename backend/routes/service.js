@@ -31,6 +31,13 @@ router.get('/getService', async(req, res) => {
     return res.status(200).send(service);
 })
 
+router.get('/getServices/:idCompany', async(req, res) => {
+    const services = await Service.find({ idCompany : req.params.idCompany});
+    if (!services) 
+        return res.status(401).send("Process failed: Error fetching services for this company");
+    return res.status(200).send( services );
+});
+
 
 router.put('/editService', async(req, res) => {
     if (!req.body._id || 
@@ -63,7 +70,7 @@ router.delete('/deleteService/:_id?', async(req, res) => {
     if(!findService)
         return res.status(401).send("Process failed: Invalid service")
 
-    const service = await Service.findByIdAndDelete(req.params._id)
+    const service = await Service.findByIdAndUpdate(req.params._id)
     if (!service)
         return res.status(401).send("Process failed: Error deleting service")
 

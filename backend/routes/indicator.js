@@ -66,13 +66,16 @@ router.put('/editIndicator', async(req, res) => {
 })
 
 router.delete('/deleteIndicator/:_id?', async(req, res) => {
+
     const validId = mongoose.isValidObjectId(req.body._id);
     if (!validId) 
         return res.status(401).json({ message: "Process failed: Invalid Id"});
+
     const findIndicator = await Indicator.findById(req.params._id)
     if(!findIndicator)
         return res.status(401).json({message: "Process failed: Invalid indicator"})
-    const indicator = await Indicator.findByIdAndDelete(req.params._id)
+
+    const indicator = await Indicator.findByIdAndUpdate(req.params._id)
     if (!indicator)
         return res.status(401).json({message: "Process failed: Error deleting indicator"})
     return res.status(200).json({message: "Process successfull: Indicator deleted"})
