@@ -32,6 +32,9 @@ router.get('/getService', async(req, res) => {
 })
 
 router.get('/getServices/:idCompany', async(req, res) => {
+    const validId = mongoose.isValidObjectId(req.params._id);
+    if (!validId) 
+        return res.status(401).json({message: "Process failed: Invalid Id"});
     const services = await Service.find({ idCompany : req.params.idCompany});
     if (!services) 
         return res.status(401).send("Process failed: Error fetching services for this company");
