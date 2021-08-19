@@ -5,7 +5,6 @@ import Interfaz from './components/Interfaz';
 import Landing from './components/Landing';
 import FormLogin from './components/FormLogin';
 import FormRegistro from './components/FormRegistro';
-import IndicadorVistaCompleta from './components/IndicadorVistaCompleta';
 import Filtro from './components/Filtro';
 import Tabla from './components/Tabla';
 import NuevoRegistro from './components/NuevoRegistro';
@@ -24,7 +23,6 @@ function App() {
         <Switch>
           <Route path='/login' component={FormLogin} />
           <Route path="/registro" component={FormRegistro} />
-          <Route path="/completa" component={IndicadorVistaCompleta}/>
 
           <Route path="/indicadores">
             <section className="container-fluid indicadores col-10 g-0 d-flex" id="indicadores">

@@ -7,16 +7,13 @@ import './Tabla.css'
 const Tabla = () => {
 
     const [ registers, setRegisters ] = useState([]);
-    // const [ servicios , setServicios ] = useState([]);
     const items = []
-    // const serviceNames = [];
 
     const getRegisters = async () => {
         
         const idCompany = "6112dbe26288fa269c94668f";
         const registersFetch = await axios.get(`http://localhost:3001/api/register/getRegisters/${idCompany}`);
 
-        console.log(registersFetch)
         const dataRegisters = registersFetch.data;
         dataRegisters.forEach( register => register.key = uniqid());
         setRegisters(dataRegisters);
