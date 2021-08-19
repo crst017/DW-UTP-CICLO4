@@ -59,9 +59,11 @@ router.get('/getRegistersId/:_id', async(req, res) => {
 
     if (!validId) 
         return res.status(401).send("Process failed: Invalid Id");
+        const findRegister = await Register.findById(req.params._id)
+        .populate(['idService','idIndicator'])
+        .exec();
 
-        
-        const findRegister = await Register.findById(req.params._id);
+
         if(!findRegister)
             return res.status(401).send("Process failed: Error fetching registers");
         return res.status(200).send( findRegister );
@@ -79,7 +81,9 @@ router.put('/editRegister', async(req, res) => {
         !req.body.month ||
         !req.body.idService || 
         !req.body.idIndicator|| 
-        !req.body.compliance)
+        !req.body.compliance
+        
+        )
         return res.status(404).send("Process failed: Incomplete data");
 
     const validId = mongoose.isValidObjectId(req.body._id);
@@ -90,13 +94,15 @@ router.put('/editRegister', async(req, res) => {
     if(!findRegister)
         return res.status(404).send("Process failed: Invalid register")
 
+
     const register = await Register.findByIdAndUpdate(req.body._id, {
         idCompany : req.body.idCompany,
         year : req.body.year, 
         month : req.body.month, 
         idService : req.body.idService, 
         idIndicator : req.body.idIndicator, 
-        compliance : req.body.compliance
+        compliance : req.body.compliance,
+        comments: req.body.comments
     }, { new: true })
     if (!register) 
         return res.status(404).send("Process failed: Error updating register")
