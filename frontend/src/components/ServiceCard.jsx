@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import './editar.css';
-// import axios from 'axios';
+import axios from 'axios';
 import './serviceCard.css';
 import uniqid from 'uniqid';
+import Swal from 'sweetalert2';
 
 const capitalize = function( string ) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-
-
+const swal = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-primary'
+    },
+    buttonsStyling: false
+});
 
 class App extends Component {
 
@@ -30,12 +35,27 @@ class App extends Component {
 
     // console.log(service)
 
-//     deleteTask(id) {
-//         axios.delete(`http://localhost:3001/api/register/deleteRegister/${id}`)
-//             .then(data => {
-//                 this.fetchTasks();
-//             });
-//     }
+    deleteIndicator(id) {
+        console.log(id)
+        axios.put(`http://localhost:3001/api/indicator/deleteIndicator/${id}`)
+            .then(data => {
+                // this.fetchTasks();
+                console.log(data);
+                swal.fire(
+                    'Eliminado!',
+                    'El indicador ha sido marcado como false',
+                    'success'
+                );
+            })
+            .catch( err => {
+                console.log(err,"err")
+                swal.fire(
+                    'Error!',
+                    'El indicador ya habia sido marcado como false',
+                    'error'
+                );
+            });
+    }
 
 //     editTask(id) {
 //         fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
@@ -101,9 +121,10 @@ class App extends Component {
                                 <div className="fila-indicador" key={ uniqid() }>
                                     <p className="card-text">{indicator.indicatorName}</p>
                                     <button className="btn btn-primary">Editar</button>
-                                    <button className="btn btn-danger">Eliminar</button>
+                                    <button className="btn btn-danger" onClick={() => this.deleteIndicator(indicator._id)}>Eliminar</button>
                                 </div>
                             )
+                            
                         })
                     }
                 </div>
