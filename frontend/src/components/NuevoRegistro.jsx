@@ -19,7 +19,6 @@ const NuevoRegistro = () => {
     const [ compliance, setCompliance] = useState();
 
     const [token, setToken] = useState(localStorage.getItem("token"));
-    // const [company, setCompany] = useState("");
     useEffect(() => {
         setToken(localStorage.getItem("token"))
         if (token == null) {

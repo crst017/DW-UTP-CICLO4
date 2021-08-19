@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./login.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import { Alert } from "@material-ui/lab";
 
@@ -29,6 +29,7 @@ export default function FormLogin() {
                 email: "",
                 password: "",
             });
+            <Redirect to='/interfaz' />
             history.push('/interfaz')
             localStorage.setItem('token', res.data.jwtToken)
         })

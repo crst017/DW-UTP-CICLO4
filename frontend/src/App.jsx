@@ -11,12 +11,26 @@ import NuevoRegistro from './components/NuevoRegistro';
 import EditarRegistros from './components/EditarRegistros';
 import EditarServicios from './components/EditarServicios';
 
-import React from 'react';
+import Indicadores from './components/Indicadores';
+
+import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './components/login.css'
+import ProtectedRoute from './services/ProtectedRoute'
 
 function App() {
+  const [loged, setLoged] = useState(!!localStorage.getItem("token"));
+
+  useEffect(() => {
+    setLoged(!!localStorage.getItem("token"));
+    if (loged) {
+      document.getElementById('sesion').innerHTML = 'Cerrar sesión';
+    } else {
+      document.getElementById('sesion').innerHTML = 'Iniciar sesión';
+    }
+  }, [loged]);
+
   return (
     <div className="App">
       <Header/>
@@ -25,33 +39,38 @@ function App() {
           <Route path='/login' component={FormLogin} />
           <Route path="/registro" component={FormRegistro} />
 
-          <Route path="/indicadores">
+          <ProtectedRoute exact path="/indicadores" component = {Indicadores} auth={ loged }/>
+
+          {/* <Route path="/indicadores">
             <section className="container-fluid indicadores col-10 g-0 d-flex" id="indicadores">
               <Filtro className="col"></Filtro>
               <Tabla></Tabla>
             </section>
-          </Route>
+          </Route> */}
             
-          <Route path="/nuevo">
+          <ProtectedRoute exact path="/nuevo" component = {NuevoRegistro} auth={ loged }/>
+          {/* <Route path="/nuevo" auth={ isAuthenticated }>
             <NuevoRegistro></NuevoRegistro>
-          </Route>
+          </Route> */}
 
-          <Route path="/editar">
+          <ProtectedRoute exact path="/editar" component = {EditarRegistros} auth={ loged }/>
+          {/* <Route path="/editar">
             <EditarRegistros></EditarRegistros>
-          </Route>
+          </Route>*/}
 
-          <Route path="/editarServicio">
+          <ProtectedRoute exact path="/editarServicio" component = {EditarServicios} auth={ loged }/>
+          {/*<Route path="/editarServicio">
             <EditarServicios></EditarServicios>
-          </Route>
+          </Route> */}
 
-          <Route path="/landing">
+          {/* <Route path="/landing">
             <Landing></Landing>
-          </Route>
+          </Route> */}
 
-          <Route path="/interfaz" component = {Interfaz}/>
-          <Router path = "/landing" component = {Landing}/>
+          <Route path="/interfaz" exact component = {Interfaz} auth={ loged }/>
+          {/* <Router path = "/landing" component = {Landing}/> */}
 
-          <Route exact path="/">
+          <Route path="/">
             <Landing/>
           </Route>
 

@@ -100,7 +100,8 @@ class App extends Component {
 
     render() {
         return (
-            <div id="service-container" className="col-9">
+            <div id="service-container" className="container-fluid col-6 my-5 registro">
+                <h2>Editar servicios</h2>
                 {
                     this.state.services.map( service => {
                         return (
