@@ -38,11 +38,16 @@ router.get('/getIndicators', async(req, res) => {
 
 
 router.get('/getIndicator/:idService', async(req, res) => {
-    const indicator = await Indicator.find({idService: req.params.idService})
+
+    const indicator = await Indicator.find({ $and: [
+        {idService: req.params.idService},
+        {status: true}
+    ]});
+
     if (!indicator) 
         return res.status(401).send("Process failed: Error fetching indicator information");
     return res.status(200).send(indicator);
-})
+});
 
 router.put('/editIndicator', async(req, res) => {
     if (!req.body._id || 
@@ -65,7 +70,7 @@ router.put('/editIndicator', async(req, res) => {
     return res.status(200).send({indicator})
 })
 
-router.delete('/deleteIndicator/:_id?', async(req, res) => {
+router.put('/deleteIndicator/:_id?', async(req, res) => {
 
     const validId = mongoose.isValidObjectId(req.body._id);
     if (!validId) 
@@ -75,10 +80,16 @@ router.delete('/deleteIndicator/:_id?', async(req, res) => {
     if(!findIndicator)
         return res.status(401).json({message: "Process failed: Invalid indicator"})
 
-    const indicator = await Indicator.findByIdAndUpdate(req.params._id)
-    if (!indicator)
-        return res.status(401).json({message: "Process failed: Error deleting indicator"})
-    return res.status(200).json({message: "Process successfull: Indicator deleted"})
+        
+
+
+    const indicator = await Indicator.findByIdAndUpdate(req.params._id, {
+        status: false
+    }, { new: true })
+    if (!indicator) 
+        return res.status(401).json({message: "Process failed: Error updating indicator"})
+
+    return res.status(200).json({message: "Process successfull: Indicator deleted", indicator})
 })
 
 module.exports = router;
