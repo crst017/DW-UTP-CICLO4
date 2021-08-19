@@ -23,9 +23,20 @@ router.post("/newCompany", async(req, res) => {
     return res.status(200).send(company)
 })
 
-// Metodo get para obtener información de la compañia
+// Metodo get para obtener información de la compañia ***DE TODAS LAS COMPAÑIAS***
 router.get('/getCompany', async(req, res) => {
     const company = await Company.find()
+    if (!company) 
+        return res.status(401).json({message: "Process failed: Error fetching company information"});
+    return res.status(200).send(company );
+})
+
+// *** DE UNA SOLA COMPAÑIA ***
+router.get('/getCompany/:_id', async(req, res) => {
+    const validId = mongoose.isValidObjectId(req.params._id);
+    if (!validId) 
+        return res.status(401).json({message: "Process failed: Invalid Id"});
+    const company = await Company.findOne({ _id: req.params._id})
     if (!company) 
         return res.status(401).json({message: "Process failed: Error fetching company information"});
     return res.status(200).send(company );

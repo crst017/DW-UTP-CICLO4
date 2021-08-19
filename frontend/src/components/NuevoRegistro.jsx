@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import uniqid from 'uniqid';
 import './NuevoRegistro.css'
 import Swal from 'sweetalert2';
+import { useHistory } from "react-router-dom";
 
 const NuevoRegistro = () => {
+    const history = useHistory();
 
     const [ company, setCompany ] = useState({});
     const [ services, setServices ] = useState([]);
@@ -16,6 +18,22 @@ const NuevoRegistro = () => {
     const [ month, setMonth] = useState("");
     const [ compliance, setCompliance] = useState();
 
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    // const [company, setCompany] = useState("");
+    useEffect(() => {
+        setToken(localStorage.getItem("token"))
+        if (token == null) {
+          return;
+        } else {
+          let jwtData = token.split(".")[1];
+          let decodedJwtJsonData = window.atob(jwtData);
+          let decodedJwtData = JSON.parse(decodedJwtJsonData);
+          setidCompany(decodedJwtData.idCompany);
+            console.log(decodedJwtData);
+          //   return role;
+        }
+      }, [token]);
+
     const swal = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-primary'
@@ -24,13 +42,14 @@ const NuevoRegistro = () => {
     });
 
     const getCompany = async () => {
-        let company = await axios.get('http://localhost:3001/api/company/getCompany');
-        setCompany(company.data[0]);
-        setidCompany(company.data[0]._id);
+        let company = await axios.get('http://localhost:3001/api/company/getCompany/' + idCompany);
+        console.log(company);
+        setCompany(company.data);
+        setidCompany(company.data._id);
     }
 
     const getServices = async () => {
-        let services = await axios.get('http://localhost:3001/api/service/getService');
+        let services = await axios.get('http://localhost:3001/api/service/getServices/' + idCompany);
         services = services.data;
         services.forEach( service => service.key = uniqid());
         setServices(services);
@@ -106,6 +125,9 @@ const NuevoRegistro = () => {
         // Clear all the form
     }
 
+    const handleCancelar = () => {
+        history.push('/interfaz')
+    }
     window.onload = chargeData;
 
     return (
@@ -181,7 +203,7 @@ const NuevoRegistro = () => {
             
             <div className="doble-col">
                 <button className="btn btn-secondary" type="submit">Guardar</button>
-                <button className="btn btn-secondary" type="reset">Cancelar</button>
+                <button className="btn btn-secondary" type="reset" routerlink="interfaz" onClick={handleCancelar}>Cancelar</button>
             </div>
             
         </form>
