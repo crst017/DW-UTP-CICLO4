@@ -103,7 +103,7 @@ const NuevoRegistro = () => {
         const creado = await axios.post('https://centralizadorindicadores-back.herokuapp.com/api/register/newRegister', body);
         console.log(creado.status)
         if (creado.status === 200) {
-            resetForm();
+            // resetForm();
             swal.fire(
                 'Creado!',
                 'El nuevo registro ha sido guardado',
