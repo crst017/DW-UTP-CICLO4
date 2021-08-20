@@ -117,12 +117,6 @@ const NuevoRegistro = () => {
             );
         }
     }
-    
-    const resetForm = () => {
-        // document.querySelector('.comments').value = "Registro guardado con éxito";
-        // TO DO
-        // Clear all the form
-    }
 
     const handleCancelar = () => {
         history.push('/interfaz')
@@ -133,7 +127,7 @@ const NuevoRegistro = () => {
 
         <div className="container-fluid col-6 my-5 registro">
         
-        <h2>Registrar nuevo indicador</h2>
+        <h2>Nuevo Registro</h2>
         <form className="container-fluid card my-4 g-0 p-4 px-5 registro" 
             onSubmit={ (e) => createRegister(e) }>
 

@@ -38,7 +38,6 @@ router.get('/getIndicators', async(req, res) => {
 
 
 router.get('/getIndicator/:idService', async(req, res) => {
-
     const indicator = await Indicator.find({ $and: [
         {idService: req.params.idService},
         {status: true}
@@ -48,6 +47,19 @@ router.get('/getIndicator/:idService', async(req, res) => {
         return res.status(401).send("Process failed: Error fetching indicator information");
     return res.status(200).send(indicator);
 });
+
+router.get('/getIndicatorId/:_id', async(req, res) => {
+    
+    const validId = mongoose.isValidObjectId(req.params._id);
+    if (!validId) 
+        return res.status(401).json({message: "Process failed: Invalid Id"});
+
+    const indicator = await Indicator.findOne({ _id: req.params._id})
+    if (!indicator) 
+        return res.status(401).json({message: "Process failed: Error fetching company information"});
+        
+    return res.status(200).send(indicator );
+})
 
 router.put('/editIndicator', async(req, res) => {
     if (!req.body._id || 

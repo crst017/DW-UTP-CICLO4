@@ -7,7 +7,7 @@ const FilaTablaEditar = (props) => {
     const { register } = props;
 
     const eliminarDatos = async (event) => {
-        let retorno = await axios.delete(`http://localhost:3001/api/register/deleteRegister/${register._id}`);
+        let retorno = await axios.delete(`https://centralizadorindicadores-back.herokuapp.com/api/register/deleteRegister/${register._id}`);
         console.log(retorno)
     }
 
