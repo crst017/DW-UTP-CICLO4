@@ -4,7 +4,7 @@ import { Alert } from "@material-ui/lab";
 import "./login.css";
 import { useHistory } from 'react-router-dom'
 
-const uri = "http://localhost:3001/api/";
+const uri = "https://centralizadorindicadores-back.herokuapp.com/api/";
 
 export default function FormRegistro() {
   // const isMountedRef = useIsMountedRef();

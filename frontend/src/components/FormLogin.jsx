@@ -4,7 +4,8 @@ import { useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import { Alert } from "@material-ui/lab";
 
-const uri = "http://localhost:3001/api/";
+// const uri = "http://localhost:3001/api/";
+const uri = "https://centralizadorindicadores-back.herokuapp.com/api/"
 
 export default function FormLogin() {
   const history = useHistory();
