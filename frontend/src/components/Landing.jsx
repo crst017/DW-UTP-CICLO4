@@ -11,7 +11,7 @@ export default function Landing() {
                 <img src={adv1} className='img-fluid' alt="banner" />
             </div>
             <div className="cont-card">
-                <span className='card card-home' href="/">
+                <span className='card card-home'>
                     <h2>Trazabilidad</h2>
                     <p>Para el área de calidad, no hay mejor
                         herramienta disponible que un histórico 
@@ -20,7 +20,7 @@ export default function Landing() {
                     </p>
                 </span>
 
-                <span className="card card-home" href="/">
+                <span className="card card-home">
                     <h2>Accesibilidad</h2>
                     <p>Un líder de gestión contará siempre con disponibilidad 
                         de nuestro servicio las 24 horas/7 días de la semana. Estamos 
@@ -29,7 +29,7 @@ export default function Landing() {
                     </p>
                 </span>
 
-                <span className="card card-home" href="/">
+                <span className="card card-home">
                     <h2>Versatilidad</h2>
                     <p>Imitando las ventajas de un ERP, cada cliente 
                         cuenta con una flexibilidad única para registrar, 

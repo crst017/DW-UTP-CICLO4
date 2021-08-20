@@ -55,6 +55,10 @@
     border-color: rgba(0, 0, 0, 0.3);
 }
 
+.h2 {
+    text-align: center;
+}
+
 /* .App .card {
     border-color: #087990;
 } */
