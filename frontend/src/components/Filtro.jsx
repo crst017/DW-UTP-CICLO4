@@ -89,71 +89,21 @@ const Filtro = () => {
 				{company.companyName}
 			</h5>
 
-			{/* <select id="service" className="form-select" aria-label="Default select example" defaultValue={"Servicio"} required onChange={ (e) => getCompanies(e) }>
-                <option disabled={true} >Servicio</option>
-                    {   companies.map( company => <option value={company.companyName} key={company.key} >{company.companyName}</option> )}
-            </select> */}
-
-			{/* <label className="font-weight-bold mb-0 mx-2">Servicio */}
+			<label className="font-weight-bold mb-0 mx-2">Servicio
             <select id="service" className="form-select" aria-label="Default select example" defaultValue={"Servicio"} required onChange={ (e) => getIndicators(e) }>
                 <option disabled={true} >Servicio</option>
                     {   services.map( service => <option value={service.serviceName} key={service.key} >{service.serviceName}</option> )}
             </select>
+			</label>
 
-			{/* <label className="font-weight-bold mb-0 mx-2">Indicador */}
+			<label className="font-weight-bold mb-0 mx-2">Indicador
             <select className="form-select" aria-label="Default select example" defaultValue={"Indicador"} required onChange={ (e) => getIndicatorID(e) }>
                 <option disabled={true}>Indicador</option>
                 {   indicators.map( indicator => <option value={indicator.serviceName} key={indicator.key} >{indicator.indicatorName}</option> )}
             </select>
-            {/* </label> */}
+            </label>
 			
-            {/* </label> */}
-			{/* <div className="form-check">
-				<input
-					type="checkbox"
-					className="form-check-input filled-in"
-					id="new"
-				/>
-				<label className="form-check-label text-capitalize" htmlFor="new">
-					empresa A
-				</label>
-			</div>
-
-			<div className="form-check">
-				<input
-					type="checkbox"
-					className="form-check-input filled-in"
-					id="used"
-				/>
-				<label className="form-check-label text-capitalize" htmlFor="used">
-					Empresa B
-				</label>
-			</div>
-
-			<div className="form-check">
-				<input
-					type="checkbox"
-					className="form-check-input filled-in"
-					id="collectible"
-				/>
-				<label
-					className="form-check-label text-capitalize"
-					htmlFor="collectible"
-				>
-					Empresa C
-				</label>
-			</div>
-
-			<div className="form-check">
-				<input
-					type="checkbox"
-					className="form-check-input filled-in"
-					id="renewed"
-				/>
-				<label className="form-check-label text-capitalize" htmlFor="renewed">
-					Empresa D
-				</label>
-			</div> */}
+            
 
 			<h5 className="font-weight-bold mb-0 mt-2 card-header">Año</h5>
 			<select

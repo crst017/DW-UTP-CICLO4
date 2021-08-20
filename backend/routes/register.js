@@ -70,7 +70,7 @@ router.get('/getRegistersId/:_id', async(req, res) => {
 });
 
 router.post('/registersFilter', async(req, res) => {
-
+    console.log("entre")
     if (!req.body.idCompany )
         return res.status(401).send("Process failed: Incomplete data");
 
