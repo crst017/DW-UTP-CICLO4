@@ -38,7 +38,7 @@ class App extends Component {
 
     deleteIndicator(id) {
         console.log(id)
-        axios.put(`http://localhost:3001/api/indicator/deleteIndicator/${id}`)
+        axios.put(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/deleteIndicator/${id}`)
             .then(data => {
                 this.fetchIndicators();
                 console.log(data);
@@ -59,7 +59,7 @@ class App extends Component {
     }
 
 //     editTask(id) {
-//         fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+//         fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegistersId/${id}`)
 //           .then(res => res.json())
 //           .then(data => {
 //             this.setState({
@@ -72,7 +72,7 @@ class App extends Component {
 //     }
 
 //       editTaskSend(id) {
-//         fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+//         fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegistersId/${id}`)
 //           .then(res => res.json())
 //           .then(data => {
 
@@ -88,7 +88,7 @@ class App extends Component {
 //               }
 //               console.log(body)
 
-//               axios.put(`http://localhost:3001/api/register/editRegister`, body)
+//               axios.put(`https://centralizadorindicadores-back.herokuapp.com/api/register/editRegister`, body)
 //               .then(data => {
 //                 this.fetchTasks();
 //             });
@@ -102,7 +102,7 @@ class App extends Component {
 
     fetchIndicators() {
         const idService = this.props.service._id;
-        fetch(`http://localhost:3001/api/indicator/getIndicator/${idService}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/getIndicator/${idService}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ indicators: data });
@@ -110,7 +110,7 @@ class App extends Component {
     }
 
     editTask(id) {
-        fetch(`http://localhost:3001/api/indicator/getIndicatorId/${id}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/getIndicatorId/${id}`)
           .then(res => res.json())
           .then(data => {
             console.log(data)
@@ -129,7 +129,7 @@ class App extends Component {
         //         "_id" : id,
         //         "indicatorName" : value
         //     }
-        //     axios.put(`http://localhost:3001/api/indicator/editIndicator`, body)
+        //     axios.put(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/editIndicator`, body)
         //         .then( data => {
         //         this.fetchIndicators();
         //         });

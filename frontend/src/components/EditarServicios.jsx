@@ -30,14 +30,14 @@ class App extends Component {
 
 
 //     deleteTask(id) {
-//         axios.delete(`http://localhost:3001/api/register/deleteRegister/${id}`)
+//         axios.delete(`https://centralizadorindicadores-back.herokuapp.com/api/register/deleteRegister/${id}`)
 //             .then(data => {
 //                 this.fetchTasks();
 //             });
 //     }
 
 //     editTask(id) {
-//         fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+//         fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegistersId/${id}`)
 //           .then(res => res.json())
 //           .then(data => {
 //             this.setState({
@@ -50,7 +50,7 @@ class App extends Component {
 //     }
 
 //       editTaskSend(id) {
-//         fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+//         fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegistersId/${id}`)
 //           .then(res => res.json())
 //           .then(data => {
 
@@ -66,7 +66,7 @@ class App extends Component {
 //               }
 //               console.log(body)
 
-//               axios.put(`http://localhost:3001/api/register/editRegister`, body)
+//               axios.put(`https://centralizadorindicadores-back.herokuapp.com/api/register/editRegister`, body)
 //               .then(data => {
 //                 this.fetchTasks();
 //             });
@@ -80,7 +80,7 @@ class App extends Component {
 
     fetchServices() {
         const idCompany = "6112dbe26288fa269c94668f";
-        fetch(`http://localhost:3001/api/service/getServices/${idCompany}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/service/getServices/${idCompany}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ services: data });

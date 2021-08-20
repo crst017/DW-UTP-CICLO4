@@ -12,7 +12,7 @@ const Tabla = () => {
     const getRegisters = async () => {
         
         const idCompany = "6112dbe26288fa269c94668f";
-        const registersFetch = await axios.get(`http://localhost:3001/api/register/getRegisters/${idCompany}`);
+        const registersFetch = await axios.get(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegisters/${idCompany}`);
 
         const dataRegisters = registersFetch.data;
         dataRegisters.forEach( register => register.key = uniqid());

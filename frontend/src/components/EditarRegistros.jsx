@@ -37,7 +37,7 @@ class App extends Component {
 
 
     getServices() {
-        fetch(`http://localhost:3001/api/service/getService`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/service/getService`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ services: data });
@@ -45,7 +45,7 @@ class App extends Component {
     }
 
     getIndicators() {
-        fetch(`http://localhost:3001/api/indicator/getIndicators`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/getIndicators`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ indicators: data });
@@ -56,7 +56,7 @@ class App extends Component {
         const serviceFind = this.state.services.find(service => service.serviceName === event);
         const idService = serviceFind._id;
         this.setState({ service: idService });
-        fetch(`http://localhost:3001/api/indicator/getIndicator/${idService}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/getIndicator/${idService}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ indicators: data });
@@ -79,7 +79,7 @@ class App extends Component {
         // const serviceFind = this.state.services.find(service => service.serviceName === event);
         // const idService = serviceFind._id;
         // this.setState({ service: idService });
-        // fetch(`http://localhost:3001/api/indicator/getIndicator/${idService}`)
+        // fetch(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/getIndicator/${idService}`)
         //     .then(res => res.json())
         //     .then(data => {
         //         this.setState({ indicators: data });
@@ -93,14 +93,14 @@ class App extends Component {
 
 
     deleteTask(id) {
-        axios.delete(`http://localhost:3001/api/register/deleteRegister/${id}`)
+        axios.delete(`https://centralizadorindicadores-back.herokuapp.com/api/register/deleteRegister/${id}`)
             .then(data => {
                 this.fetchTasks();
             });
     }
 
     editTask(id) {
-        fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegistersId/${id}`)
           .then(res => res.json())
           .then(data => {
                 // console.log(data);
@@ -118,7 +118,7 @@ class App extends Component {
     }
 
       editTaskSend(id) {
-        fetch(`http://localhost:3001/api/register/getRegistersId/${id}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegistersId/${id}`)
           .then(res => res.json())
           .then(data => {
 
@@ -137,7 +137,7 @@ class App extends Component {
 // console.log(body);
 
 
-              axios.put(`http://localhost:3001/api/register/editRegister`, body)
+              axios.put(`https://centralizadorindicadores-back.herokuapp.com/api/register/editRegister`, body)
               .then(data => {
                 // console.log( this.state.service );
                 this.fetchTasks();
@@ -159,7 +159,7 @@ class App extends Component {
 
     fetchTasks() {
         const idCompany = "6112dbe26288fa269c94668f";
-        fetch(`http://localhost:3001/api/register/getRegisters/${idCompany}`)
+        fetch(`https://centralizadorindicadores-back.herokuapp.com/api/register/getRegisters/${idCompany}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ tasks: data });

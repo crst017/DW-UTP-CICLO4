@@ -41,14 +41,14 @@ const NuevoRegistro = () => {
     });
 
     const getCompany = async () => {
-        let company = await axios.get('http://localhost:3001/api/company/getCompany/' + idCompany);
+        let company = await axios.get('https://centralizadorindicadores-back.herokuapp.com/api/company/getCompany/' + idCompany);
         console.log(company);
         setCompany(company.data);
         setidCompany(company.data._id);
     }
 
     const getServices = async () => {
-        let services = await axios.get('http://localhost:3001/api/service/getServices/' + idCompany);
+        let services = await axios.get('https://centralizadorindicadores-back.herokuapp.com/api/service/getServices/' + idCompany);
         services = services.data;
         services.forEach( service => service.key = uniqid());
         setServices(services);
@@ -60,7 +60,7 @@ const NuevoRegistro = () => {
         const idService = serviceFind._id;
         setidService(idService);
 
-        let indicators = await axios.get(`http://localhost:3001/api/indicator/getIndicator/${idService}`);
+        let indicators = await axios.get(`https://centralizadorindicadores-back.herokuapp.com/api/indicator/getIndicator/${idService}`);
         indicators = indicators.data;
         indicators.forEach( indicator => indicator.key = uniqid());
         setIndicators(indicators);
@@ -100,7 +100,7 @@ const NuevoRegistro = () => {
             "comments" : comments,
         }
 
-        const creado = await axios.post('http://localhost:3001/api/register/newRegister', body);
+        const creado = await axios.post('https://centralizadorindicadores-back.herokuapp.com/api/register/newRegister', body);
         console.log(creado.status)
         if (creado.status === 200) {
             resetForm();
