@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import './editar.css';
 import axios from 'axios';
 
 const capitalize = function( string ) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
-
 
 class App extends Component {
     constructor() {
@@ -18,7 +17,8 @@ class App extends Component {
             month: '',
             compliance: 0,
             comments:'',
-
+            idCompany: '',
+            token: localStorage.getItem("token"),
 
             services: [],
             indicators: [],
@@ -133,10 +133,6 @@ class App extends Component {
                   "comments": this.state.comments,
               }
 
-
-// console.log(body);
-
-
               axios.put(`https://centralizadorindicadores-back.herokuapp.com/api/register/editRegister`, body)
               .then(data => {
                 // console.log( this.state.service );
@@ -146,16 +142,20 @@ class App extends Component {
           });
       }
 
-
-
     componentDidMount() {
         this.getServices();
         this.getIndicators();
         this.fetchTasks();
-
+        if (this.token == null) {
+            return;
+        } else {
+            let jwtData = this.token.split(".")[1];
+            let decodedJwtJsonData = window.atob(jwtData);
+            let decodedJwtData = JSON.parse(decodedJwtJsonData);
+            this.setState({ idComapany : decodedJwtData.idCompany});
+            console.log(decodedJwtData);
         }
-
-
+        }
 
     fetchTasks() {
         const idCompany = "6112dbe26288fa269c94668f";
@@ -166,8 +166,6 @@ class App extends Component {
                 // console.log(this.state.tasks);
             });
     }
-
-    
 
     render() {
         return (
@@ -202,15 +200,15 @@ class App extends Component {
                                                 <td>{capitalize(task.comments)}</td>
                                                 <td>
                                                     <button onClick={() => this.editTask(task._id)} className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                                                    <i class="bi-pencil-fill"></i>
+                                                    <i className="bi-pencil-fill"></i>
                                                     </button>
                                                     <button onClick={() => this.deleteTask(task._id)} className="btn btn-danger">
-                                                    <i class="bi-trash-fill"></i>
+                                                    <i className="bi-trash-fill"></i>
                                                     </button>
                                                 </td>
 
                                                 <div className="container">
-                                                    <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div className="modal-dialog">
                                                             <div className="modal-content">
                                                                 <div className="modal-header">
@@ -218,27 +216,27 @@ class App extends Component {
                                                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div className="modal-body">
-                                                                    <label for="editService" className="col-12 control-label"  >Servicio:
+                                                                    <label htmlFor="editService" className="col-12 control-label"  >Servicio:
                                                                         <select className="form-select w-100" onChange={(e) => this.getIndicatorID(e.target.value)}>
                                                                             {/* <select className="form-select w-100" > */}
                                                                             <option disabled={true} ></option>
                                                                             {this.state.services.map(service => <option value={service.serviceName} key={service.key} >{service.serviceName}</option>)}
                                                                         </select>
                                                                     </label>
-                                                                    <label for="editService" className="col-12 control-label"  >Indicador:
+                                                                    <label htmlFor="editService" className="col-12 control-label"  >Indicador:
                                                                         <select className="form-select w-100" required onChange={(e) => this.setIndocatorId(e.target.value)}>
                                                                         {/* <select className="form-select w-100" > */}
                                                                             <option disabled={true} ></option>
                                                                             {this.state.indicators.map(indicator => <option value={indicator.indicatorName} key={indicator.key} >{indicator.indicatorName}</option>)}
                                                                         </select>
                                                                     </label>
-                                                                    <label for="editCompliance" className="form-label">Año:</label>
-                                                                    <input type="text" onChange={e => this.setState({ year: e.target.value })} value={this.state.year} class="form-control" id="editYear"></input>
+                                                                    <label htmlFor="editCompliance" className="form-label">Año:</label>
+                                                                    <input type="text" onChange={e => this.setState({ year: e.target.value })} value={this.state.year} className="form-control" id="editYear"></input>
                                                                     
                                                                     
-                                                                    <label for="editmonth" className="col-12 control-label"  >Mes:
-                                                                        {/* <input type="text" onChange={e => this.setState({ month: e.target.value })} value={this.state.month} class="form-control" id="editmonth"></input> */}
-                                                                        <select onChange={e => this.setState({ month: e.target.value })} value={this.state.month} class="form-control" id="editmonth">
+                                                                    <label htmlFor="editmonth" className="col-12 control-label"  >Mes:
+                                                                        {/* <input type="text" onChange={e => this.setState({ month: e.target.value })} value={this.state.month} className="form-control" id="editmonth"></input> */}
+                                                                        <select onChange={e => this.setState({ month: e.target.value })} value={this.state.month} className="form-control" id="editmonth">
                                                                             <option defaultValue={this.state.month} disabled={true}></option>
                                                                             <option value="enero">Enero</option>
                                                                             <option value="febrero">Febrero</option>
@@ -258,10 +256,10 @@ class App extends Component {
                                                                     
                                                                     
                                                                     
-                                                                    <label for="editCompliance" className="form-label">Cumplimiento:</label>
-                                                                    <input type="number" onChange={e => this.setState({ compliance: e.target.value })} value={this.state.compliance} class="form-control" id="editCompliance"></input>
-                                                                    <label for="editCompliance" className="form-label">comentarios:</label>
-                                                                    <input type="text" onChange={e => this.setState({ comments: e.target.value })} value={this.state.comments} class="form-control" id="editCompliance"></input>
+                                                                    <label htmlFor="editCompliance" className="form-label">Cumplimiento:</label>
+                                                                    <input type="number" onChange={e => this.setState({ compliance: e.target.value })} value={this.state.compliance} className="form-control"></input>
+                                                                    <label htmlFor="editCompliance" className="form-label">comentarios:</label>
+                                                                    <input type="text" onChange={e => this.setState({ comments: e.target.value })} value={this.state.comments} className="form-control"></input>
                                                                 </div>
                                                                 <div className="modal-footer">
                                                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

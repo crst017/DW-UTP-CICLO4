@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './editar.css';
-import axios from 'axios';
+// import axios from 'axios';
 import ServiceCard from './ServiceCard';
 import './serviceCard.css'
 
-const capitalize = function( string ) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-}
+// const capitalize = function( string ) {
+//     return string.charAt(0).toUpperCase() + string.slice(1)
+// }
 
 class App extends Component {
     constructor() {

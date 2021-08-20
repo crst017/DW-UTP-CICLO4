@@ -5,9 +5,9 @@ import './serviceCard.css';
 import uniqid from 'uniqid';
 import Swal from 'sweetalert2';
 
-const capitalize = function( string ) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-}
+// const capitalize = function( string ) {
+//     return string.charAt(0).toUpperCase() + string.slice(1)
+// }
 
 const swal = Swal.mixin({
     customClass: {
