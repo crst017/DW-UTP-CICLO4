@@ -69,6 +69,26 @@ router.get('/getRegistersId/:_id', async(req, res) => {
         return res.status(200).send( findRegister );
 });
 
+router.post('/registersFilter', async(req, res) => {
+
+    if (!req.body.idCompany )
+        return res.status(401).send("Process failed: Incomplete data");
+
+    const filter = [];
+
+    filter.push({idCompany: req.body.idCompany})
+    if ( req.body.month ) filter.push({month:req.body.month});
+    if ( req.body.year ) filter.push({year:req.body.year});
+    if ( req.body.idIndicator ) filter.push({idIndicator: req.body.idIndicator});
+    if ( req.body.idService ) filter.push({idService: req.body.idService});
+    
+    const registers = await Register.find({ $and: filter});
+
+    if (!registers) 
+        return res.status(401).send("Process failed: Error fetching registers");
+    return res.status(200).send( registers );
+});
+
 
 
 
