@@ -28,25 +28,18 @@ const Indicadores = () => {
 			let decodedJwtJsonData = window.atob(jwtData);
 			let decodedJwtData = JSON.parse(decodedJwtJsonData);
 			setidCompany(decodedJwtData.idCompany);
-			console.log(decodedJwtData);
+            chargeData(decodedJwtData.idCompany);
+			// console.log(decodedJwtData.idCompany);
 		}
 	}, [token]);
 
-	const getCompany = async () => {
+	const getCompany = async (idCompany) => {
         let company = await axios.get('https://centralizadorindicadores-back.herokuapp.com/api/company/getCompany/' + idCompany);
-        console.log(company);
         setCompany(company.data);
         setidCompany(company.data._id);
     }
 
-	const getCompanies = async () => {
-        let company = await axios.get('https://centralizadorindicadores-back.herokuapp.com/api/company/getCompany/');
-        console.log(company);
-        setCompanies(company.data);
-        // setidCompany(company.data._id);
-    }
-
-	const getServices = async () => {
+	const getServices = async (idCompany) => {
         let services = await axios.get('https://centralizadorindicadores-back.herokuapp.com/api/service/getServices/' + idCompany);
         services = services.data;
         services.forEach( service => service.key = uniqid());
@@ -72,9 +65,9 @@ const Indicadores = () => {
         setidIndicator(idIndicator);
     }
 
-	const chargeData = () => {
-        getCompany();
-        getServices();
+	const chargeData = (idCompany) => {
+        getCompany(idCompany);
+        getServices(idCompany);
     }
 
 	const [ year, setYear] = useState("");
@@ -94,8 +87,6 @@ const Indicadores = () => {
             .catch( err=> console.log(err))
     }
 
-	window.onload = chargeData;
-    
     return (
         <section className="container-fluid indicadores col-10 g-0 d-flex" id="indicadores">
               <div className="col">
