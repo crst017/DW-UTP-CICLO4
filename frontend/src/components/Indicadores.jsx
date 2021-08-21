@@ -1,7 +1,4 @@
-
-import Filtro from './Filtro';
 import Tabla from './Tabla';
-
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
@@ -11,7 +8,6 @@ import "./Filtro.css";
 const Indicadores = () => {
 
     const [ company, setCompany ] = useState([]);
-	const [ companies, setCompanies ] = useState({});
     const [ services, setServices ] = useState([]);
     const [ indicators, setIndicators ] = useState([]);
     const [ idService, setidService ] = useState("");

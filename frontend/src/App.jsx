@@ -5,8 +5,6 @@ import Interfaz from './components/Interfaz';
 import Landing from './components/Landing';
 import FormLogin from './components/FormLogin';
 import FormRegistro from './components/FormRegistro';
-// import Filtro from './components/Filtro';
-// import Tabla from './components/Tabla';
 import NuevoRegistro from './components/NuevoRegistro';
 import EditarRegistros from './components/EditarRegistros';
 import EditarServicios from './components/EditarServicios';
