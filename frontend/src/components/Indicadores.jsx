@@ -83,6 +83,9 @@ const Indicadores = () => {
     const filterRegister = () => {
         const body = {
             idCompany : idCompany,
+            year: year || null,
+            idService : idService || null,
+            idIndicator : idIndicator || null,
             month : month
         }
         console.log(body)
