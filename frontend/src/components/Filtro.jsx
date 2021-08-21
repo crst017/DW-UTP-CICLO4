@@ -4,7 +4,7 @@ import uniqid from 'uniqid';
 import "./Filtro.css";
 
 const Filtro = () => {
-	const [ company, setCompany ] = useState([]);
+	const [ company, setCompany ] = useState({});
 	const [ companies, setCompanies ] = useState({});
     const [ services, setServices ] = useState([]);
     const [ indicators, setIndicators ] = useState([]);
@@ -27,7 +27,7 @@ const Filtro = () => {
 
 	const getCompany = async () => {
         let company = await axios.get('https://centralizadorindicadores-back.herokuapp.com/api/company/getCompany/' + idCompany);
-        console.log(company);
+        console.log(company.data);
         setCompany(company.data);
         setidCompany(company.data._id);
     }
